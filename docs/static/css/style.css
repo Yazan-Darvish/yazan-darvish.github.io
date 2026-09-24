@@ -834,3 +834,571 @@ body.is-gaming{overflow:hidden}
 
 .stack__item .pills{gap:7px}
 .stack__item .pills span{font-size:13.5px;padding:5px 12px}
+
+/* --------------------------------------------- мини-игры по скиллам ------ */
+
+/* Пилюля с игрой отличается от обычной пунктиром: подсказывает, что кликабельна */
+.pills span.has-game{
+  cursor:pointer;border-style:dashed;border-color:var(--accent);
+  transition:background .2s var(--ease),color .2s var(--ease);
+}
+.pills span.has-game:hover,
+.pills span.has-game:focus-visible{background:var(--accent);color:var(--on-accent);outline:none}
+
+.sg{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:20px}
+.sg__back{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+.sg__win{
+  position:relative;width:min(640px,100%);max-height:88vh;overflow:auto;
+  background:var(--bg-card);border:1px solid var(--line);border-radius:16px;
+  padding:30px 28px 26px;
+}
+.sg__x{
+  position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--line);background:transparent;cursor:pointer;line-height:1;
+}
+.sg__x:hover{border-color:var(--accent);color:var(--accent)}
+.sg__eyebrow{
+  margin:0 0 10px;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);
+}
+.sg__title{font-size:1.5rem;margin:0 0 10px}
+.sg__task{margin:0 0 22px;color:var(--muted);font-size:15px;line-height:1.5}
+.sg__lead{margin:0 0 16px;font-size:15px;line-height:1.5}
+.sg__count{margin:16px 0 0;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.sg__warn{margin:10px 0 0;font-size:14px;color:var(--accent)}
+
+.sg__row{display:flex;flex-wrap:wrap;gap:8px}
+.sg__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+
+.sg__step,.sg__part{
+  border:1px solid var(--line);border-radius:100px;background:transparent;
+  padding:9px 16px;font-size:14px;cursor:pointer;transition:.2s var(--ease);
+}
+.sg__step:hover,.sg__part:hover{border-color:var(--accent)}
+.sg__step.is-next{border-color:var(--accent);color:var(--accent)}
+.sg__step.is-done,.sg__part.is-on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.sg__step[disabled]{cursor:default;opacity:.85}
+.sg__part{border-radius:10px}
+
+/* Страница, которую собирают в игре про WordPress */
+.sg__page{
+  min-height:150px;border:1px dashed var(--line);border-radius:12px;
+  padding:14px;margin-bottom:16px;display:grid;gap:8px;align-content:start;
+}
+.sg__empty{color:var(--muted);font-size:14px;align-self:center;justify-self:center}
+.sg__blk{border-radius:8px;background:var(--bg-soft);padding:10px 12px;font-size:13px;color:var(--muted)}
+.sg__blk--head{font-family:var(--font-display);font-size:1.2rem;color:var(--text);padding:12px}
+.sg__blk--photo{height:64px;display:grid;place-items:center}
+.sg__blk--button{justify-self:start;border-radius:100px;background:var(--accent);color:var(--on-accent)}
+
+.sg__done{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+.sg__done-text{margin:0 0 18px;font-size:16px;line-height:1.55}
+.sg__btns{display:flex;gap:10px;flex-wrap:wrap}
+
+@media (max-width:560px){
+  .sg__win{padding:26px 18px 22px}
+  .sg__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* Анкеты в игре про Yii2 */
+.sg__forms{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:6px}
+.sg__form{
+  aspect-ratio:3/4;border:1px dashed var(--line);border-radius:8px;
+  display:grid;place-items:center;font-family:var(--font-mono);font-size:13px;
+  color:var(--muted);transition:.2s var(--ease);
+}
+.sg__form.is-done{border-style:solid;border-color:var(--accent);color:var(--accent)}
+
+/* Полки в игре про OpenCart */
+.sg__shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:6px}
+.sg__slot{
+  min-height:56px;border:1px dashed var(--line);border-radius:8px;
+  display:grid;place-items:center;font-size:13px;color:var(--muted);padding:6px;text-align:center;
+}
+.sg__slot.is-full{border-style:solid;border-color:var(--accent);background:var(--bg-soft);color:var(--text)}
+
+.sg__part b{font-family:var(--font-mono);font-size:12px;opacity:.7;margin-left:4px}
+
+@media (max-width:560px){
+  .sg__forms{grid-template-columns:repeat(4,1fr)}
+  .sg__shelf{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Блок Python: загадка, ответы, чат, поток вопросов, строка поиска */
+.sg__riddle{font-size:56px;text-align:center;margin-bottom:10px;line-height:1}
+.sg__answer{
+  margin:16px 0 0;padding:12px 14px;border-radius:10px;background:var(--bg-soft);
+  font-size:14.5px;line-height:1.55;
+}
+.sg__answer.is-wrong{color:var(--muted)}
+.sg__sample,.sg__search{
+  margin-bottom:14px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;
+  font-size:14.5px;
+}
+.sg__search{font-family:var(--font-mono);font-size:13.5px;color:var(--accent)}
+
+.sg__stage{
+  min-height:92px;display:grid;place-items:center;margin-bottom:6px;
+  border:1px dashed var(--line);border-radius:12px;padding:12px;
+}
+.sg__bubble{
+  border:1px solid var(--accent);background:transparent;color:var(--text);
+  border-radius:14px;padding:12px 18px;font-size:15px;cursor:pointer;
+  animation:sgPop .18s var(--ease);
+}
+.sg__bubble:hover{background:var(--accent);color:var(--on-accent)}
+@keyframes sgPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+
+.sg__chat{display:grid;gap:8px;margin-bottom:16px}
+.sg__msg{max-width:82%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.5}
+.sg__msg--buyer{background:var(--bg-soft);justify-self:start;border-bottom-left-radius:4px}
+.sg__msg--shop{background:var(--accent);color:var(--on-accent);justify-self:end;border-bottom-right-radius:4px}
+
+/* Блок JavaScript: страница-скелет, корзина, карточки, зоны, окно, рубильник */
+
+/* Голая страница без стилей — слои надеваются классами has-* */
+.sg__site{
+  border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:16px;
+  font-family:Times,serif;color:var(--text);transition:.3s var(--ease);
+}
+.sg__site h3{font-family:inherit;font-size:1.1rem;font-weight:400;letter-spacing:0;margin:0}
+.sg__site p{margin:2px 0;font-size:14px}
+.sg__site-btn{display:inline-block;border:1px solid var(--line);padding:2px 6px;font-size:13px}
+.sg__site.has-font,.sg__site.has-font h3{font-family:var(--font-body)}
+.sg__site.has-font h3{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em}
+.sg__site.has-color{background:var(--bg-soft)}
+.sg__site.has-color p{color:var(--muted)}
+.sg__site.has-color .sg__site-btn{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.sg__site.has-space{padding:22px 20px}
+.sg__site.has-space h3{margin-bottom:8px}
+.sg__site.has-space p{margin-bottom:14px}
+.sg__site.has-space .sg__site-btn{padding:8px 18px;border-radius:100px}
+
+/* Корзина в игре про Vue */
+.sg__cart{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;transition:opacity .2s}
+.sg__cart.is-loading{opacity:.35}
+.sg__cart-row,.sg__cart-total{display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:15px}
+.sg__cart-total{border-top:1px solid var(--line);margin-top:6px;padding-top:12px;font-size:17px}
+.sg__qty{display:inline-flex;align-items:center;gap:12px}
+.sg__qty button{
+  width:28px;height:28px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;cursor:pointer;line-height:1;
+}
+.sg__qty button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Карточки в игре про React */
+.sg__cards{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:14px}
+.sg__card{border:1px solid var(--line-soft);border-radius:8px;padding:8px 6px;text-align:center}
+.sg__card-btn{
+  display:block;font-size:11px;border-radius:100px;padding:4px 6px;
+  background:var(--line-soft);color:var(--muted);transition:.2s var(--ease);
+}
+.sg__card.is-ok .sg__card-btn{background:var(--accent);color:var(--on-accent)}
+
+/* Зоны: Node.js и .exe */
+.sg__zones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sg__zone{
+  border:1px dashed var(--line);border-radius:12px;padding:12px;min-height:96px;
+  display:flex;flex-direction:column;gap:6px;transition:.25s var(--ease);
+}
+.sg__zone b{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+.sg__zone span{font-size:13.5px}
+.sg__zone.is-dead{opacity:.4;border-color:var(--line-soft)}
+.sg__job{background:var(--bg-soft);border-radius:8px;padding:6px 10px;font-size:13px}
+
+/* Окно в игре про Electron */
+.sg__frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.sg__frame--app{border-radius:12px}
+.sg__bar{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--bg-soft);font-size:12px}
+.sg__bar--app{justify-content:center;font-size:13px}
+.sg__tab{background:var(--bg);border-radius:6px 6px 0 0;padding:4px 10px;white-space:nowrap}
+.sg__url{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sg__dots{width:36px;height:9px;border-radius:100px;background:var(--line);flex:none}
+.sg__screen{padding:26px 14px;text-align:center;font-size:15px}
+
+/* Рубильник в игре про .exe */
+.sg__switch{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:15px}
+.sg__toggle{
+  border:1px solid var(--line);border-radius:100px;background:transparent;
+  padding:7px 16px;font-size:13.5px;cursor:pointer;transition:.2s var(--ease);
+}
+.sg__toggle.is-on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+
+@media (max-width:560px){
+  .sg__cards{grid-template-columns:repeat(3,1fr)}
+  .sg__zones{grid-template-columns:1fr}
+}
+
+/* Блок Dart: телефон, замечания проверки, ползунок выката, мак, сборки */
+
+/* Экран телефона: родные кнопки отличаются, своя — одинакова везде */
+.sg__phone{border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  max-width:260px;margin:0 auto 16px;transition:.25s var(--ease)}
+.sg__phone-top{padding:7px;text-align:center;background:var(--bg-soft);
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.sg__phone-body{padding:18px 16px;text-align:center}
+.sg__phone-body p{margin:0 0 14px;font-size:14px}
+.sg__phone-btn{display:inline-block;background:var(--accent);color:var(--on-accent);
+  padding:9px 22px;font-size:14px;transition:.25s var(--ease)}
+.sg__phone--ios .sg__phone-btn{border-radius:12px}
+.sg__phone--android .sg__phone-btn{border-radius:100px;text-transform:uppercase;letter-spacing:.06em;font-size:12.5px}
+.sg__phone.is-own .sg__phone-btn{border-radius:6px;text-transform:none;letter-spacing:0;font-size:14px}
+
+/* Замечания проверки App Store */
+.sg__notes{display:grid;gap:7px;margin-bottom:6px}
+.sg__note{
+  text-align:left;border:1px solid var(--line);border-radius:10px;background:transparent;
+  padding:10px 13px;font-size:14px;cursor:pointer;transition:.2s var(--ease);
+}
+.sg__note:hover{border-color:var(--accent)}
+.sg__note.is-ok{border-color:var(--accent);color:var(--accent);cursor:default}
+
+/* Ползунок выката Google Play */
+.sg__slider{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.sg__slider input{flex:1;accent-color:var(--accent)}
+.sg__slider b{font-family:var(--font-mono);font-size:15px;min-width:52px;text-align:right}
+
+/* Окно мака */
+.sg__mac{
+  border:1px solid var(--line);border-radius:12px;padding:22px;text-align:center;
+  margin-bottom:16px;display:grid;gap:6px;transition:.25s var(--ease);
+}
+.sg__mac-icon{font-size:40px;line-height:1}
+.sg__mac span{font-size:13.5px;color:var(--muted)}
+.sg__mac.is-blocked{border-color:var(--accent)}
+.sg__mac.is-open{border-color:var(--accent);background:var(--bg-soft)}
+
+/* Сборки из одного исходника */
+.sg__source{
+  border:1px dashed var(--line);border-radius:10px;padding:11px 14px;margin-bottom:12px;
+  font-size:14px;text-align:center;
+}
+.sg__zones--3{grid-template-columns:repeat(3,1fr)}
+
+@media (max-width:560px){ .sg__zones--3{grid-template-columns:1fr} }
+
+/* Блок «Архитектура»: башня и посёлок, вал с деталями, печенья, тетрадь */
+
+.sg__compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.sg__compare > div > b{
+  display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px;
+}
+.sg__tower{display:flex;flex-direction:column-reverse;gap:4px}
+.sg__tower > b{order:1}
+.sg__floor,.sg__house{
+  border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-size:13px;
+  text-align:center;transition:.3s var(--ease);
+}
+.sg__tower.is-down .sg__floor{opacity:.25;border-style:dashed;text-decoration:line-through}
+.sg__houses{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.sg__house.is-down{opacity:.25;border-style:dashed;text-decoration:line-through}
+
+/* Вал с деталями: пока не разведены — общий, потом каждая сама по себе */
+.sg__machine{display:grid;gap:4px;margin-bottom:14px;border:1px solid var(--line);
+  border-radius:12px;padding:12px;transition:.3s var(--ease)}
+.sg__machine.is-split{gap:12px;border-style:dashed}
+.sg__gear{border:1px solid var(--line-soft);border-radius:8px;padding:10px;font-size:13.5px;text-align:center}
+.sg__machine.is-split .sg__gear{border-color:var(--accent)}
+
+/* Печенья: форма общая, начинка у каждого своя */
+.sg__mould{border:1px dashed var(--line);border-radius:10px;padding:10px 14px;
+  margin-bottom:12px;font-size:14px;text-align:center}
+.sg__cookies{display:flex;flex-wrap:wrap;gap:10px;min-height:66px;align-items:center;
+  justify-content:center;margin-bottom:12px}
+.sg__cookie{
+  width:54px;height:54px;border-radius:50%;border:2px solid var(--line);
+  background:var(--bg-soft);font-size:24px;cursor:pointer;line-height:1;
+  transition:.2s var(--ease);
+}
+.sg__cookie.is-choc{border-color:#8b5a2b}
+.sg__cookie.is-berry{border-color:#c2306a}
+.sg__cookie.is-mint{border-color:#3aa17e}
+.sg__cookie.is-caramel{border-color:#d79a2b}
+.sg__cookie:hover{transform:scale(1.08)}
+
+/* Общая тетрадь: сначала вразнобой, потом одним столбцом */
+.sg__book{border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:14px;
+  display:grid;gap:6px;font-family:var(--font-mono);font-size:12.5px}
+.sg__line{white-space:pre-wrap;color:var(--muted)}
+.sg__line--b{text-transform:uppercase;letter-spacing:.05em}
+.sg__line--d{font-size:11px}
+.sg__line--e{font-size:13.5px}
+.sg__book.is-tidy .sg__line{
+  text-transform:none;letter-spacing:0;font-size:12.5px;color:var(--text);
+}
+
+@media (max-width:560px){ .sg__compare{grid-template-columns:1fr} }
+
+/* Блок «Инфраструктура»: лента, очередь, конвейер, диск, папки, файлы */
+
+.sg__gear.is-bad{border-color:var(--accent);opacity:.7}
+.sg__houses--4{grid-template-columns:repeat(4,1fr);margin-bottom:14px}
+.sg__houses--4 .sg__house{padding:14px 0;font-size:16px}
+
+.sg__belt{
+  border:1px dashed var(--line);border-radius:10px;padding:14px;margin-bottom:12px;
+  text-align:center;font-size:14px;color:var(--muted);transition:.25s var(--ease);
+}
+.sg__belt.is-on{border-style:solid;border-color:var(--accent);color:var(--text)}
+
+.sg__queue{
+  display:flex;flex-wrap:wrap;gap:6px;min-height:52px;align-items:center;
+  border:1px dashed var(--line);border-radius:10px;padding:10px;margin-bottom:12px;
+}
+.sg__task{font-size:18px;line-height:1}
+
+.sg__pipe{display:flex;gap:6px;margin-bottom:14px}
+.sg__pipe-step{
+  flex:1;border:1px solid var(--line);border-radius:8px;padding:10px 6px;
+  font-size:12px;text-align:center;color:var(--muted);transition:.25s var(--ease);
+}
+.sg__pipe-step.is-ok{border-color:var(--accent);color:var(--accent)}
+
+.sg__disk{height:22px;border:1px solid var(--line);border-radius:100px;overflow:hidden;margin-bottom:6px}
+.sg__disk-fill{height:100%;background:var(--accent);opacity:.65;transition:width .35s var(--ease)}
+.sg__disk-fill.is-full{opacity:1}
+
+.sg__boxes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sg__box{border:1px solid var(--line);border-radius:10px;padding:12px;font-size:17px;min-height:78px}
+.sg__box b{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:8px}
+.sg__box--spam{border-style:dashed;opacity:.8}
+
+.sg__shop{display:flex;align-items:center;justify-content:center;gap:28px;
+  border:1px dashed var(--line);border-radius:12px;padding:20px;margin-bottom:14px;font-size:34px}
+.sg__customer{transition:.4s var(--ease)}
+.sg__customer.is-gone{opacity:.3;transform:translateX(-22px)}
+
+.sg__files{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:12px}
+.sg__file{
+  border:1px solid var(--line-soft);border-radius:8px;padding:8px 10px;
+  font-family:var(--font-mono);font-size:12px;color:var(--muted);transition:.2s var(--ease);
+}
+.sg__file.is-hit{border-color:var(--accent);color:var(--accent)}
+
+@media (max-width:560px){
+  .sg__pipe{flex-wrap:wrap}
+  .sg__pipe-step{flex:1 1 44%}
+  .sg__boxes,.sg__files{grid-template-columns:1fr}
+}
+
+/* Блок «Базы и поиск»: счета, узлы базы, записка, строка с подсказками */
+
+.sg__accounts{display:flex;align-items:center;justify-content:center;gap:14px;
+  border:1px dashed var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.sg__acc{text-align:center;flex:1}
+.sg__acc b{display:block;font-size:14px;margin-bottom:4px}
+.sg__acc span{font-family:var(--font-mono);font-size:15px;color:var(--accent)}
+.sg__arrow{font-family:var(--font-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+
+.sg__db{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:6px}
+.sg__db:has(.sg__db-node + .sg__db-node){grid-template-columns:1fr 1fr}
+.sg__db-node{border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;
+  transition:.25s var(--ease)}
+.sg__db-node b{display:block;font-size:14px;margin-bottom:4px}
+.sg__db-node span{font-size:12.5px;color:var(--muted)}
+.sg__db-node.is-hot{border-color:var(--accent)}
+
+.sg__note-pad{
+  border:1px dashed var(--line);border-radius:10px;padding:16px;margin-bottom:6px;
+  text-align:center;font-size:14px;color:var(--muted);transition:.25s var(--ease);
+}
+.sg__note-pad.is-on{border-style:solid;border-color:var(--accent);color:var(--text)}
+
+.sg__typebox input{
+  width:100%;border:1px solid var(--line);border-radius:10px;background:transparent;
+  color:var(--text);padding:11px 14px;font-family:var(--font-mono);font-size:14px;
+}
+.sg__typebox input:focus{outline:none;border-color:var(--accent)}
+.sg__hints{
+  min-height:88px;border:1px dashed var(--line);border-top:none;border-radius:0 0 10px 10px;
+  padding:10px 12px;margin-bottom:14px;display:grid;gap:5px;align-content:start;
+}
+.sg__hint{font-size:14px;padding:5px 8px;border-radius:7px;background:var(--bg-soft)}
+
+/* Блок «Платёжное железо»: провод, экран терминала, приёмник, чек */
+
+.sg__wire{text-align:center;font-size:26px;letter-spacing:2px;margin-bottom:10px}
+.sg__terminal{
+  border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px;
+  font-family:var(--font-mono);font-size:13px;text-align:center;color:var(--muted);
+  min-height:52px;display:grid;place-items:center;word-break:break-all;
+}
+.sg__terminal.is-ok{border-color:var(--accent);color:var(--accent)}
+
+.sg__pos{
+  border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px;
+  text-align:center;transition:.25s var(--ease);
+}
+.sg__pos--wait{border-color:var(--accent)}
+.sg__pos-screen{
+  background:var(--bg-soft);border-radius:8px;padding:16px;
+  font-family:var(--font-mono);font-size:14px;letter-spacing:.08em;
+}
+.sg__dots-anim{margin-top:10px;color:var(--accent);letter-spacing:.3em;animation:sgBlink 1s infinite}
+@keyframes sgBlink{50%{opacity:.25}}
+
+.sg__slot-machine{
+  border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px;text-align:center;
+}
+.sg__slot-mouth{
+  border:1px dashed var(--line);border-radius:6px;padding:12px;margin-bottom:12px;
+  font-size:13.5px;color:var(--muted);
+}
+.sg__slot-sum{font-family:var(--font-mono);font-size:18px;color:var(--accent)}
+
+.sg__receipt{
+  border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin-bottom:14px;
+  font-family:var(--font-mono);font-size:12.5px;display:grid;gap:5px;min-height:96px;
+}
+.sg__receipt b{font-size:12.5px;letter-spacing:.1em}
+.sg__receipt i{font-style:normal;color:var(--muted);font-size:11px;margin-top:4px}
+.sg__receipt.is-printed{border-style:solid}
+.sg__receipt-2{
+  margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);display:grid;gap:5px;
+  color:var(--accent);
+}
+
+/* Блок «Обмен данными»: окошко, табличка, сопоставление колонок, данные */
+
+.sg__window{
+  border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:12px;
+  text-align:center;font-size:14px;color:var(--muted);
+}
+.sg__log{display:grid;gap:4px;margin:12px 0 0}
+.sg__log-line{font-size:13px;color:var(--muted)}
+
+.sg__sign{border:1px solid var(--accent);border-radius:10px;padding:12px 14px;margin-bottom:12px;
+  display:grid;gap:5px}
+.sg__sign.is-empty{border-style:dashed;border-color:var(--line);text-align:center;
+  color:var(--muted);font-size:13.5px;padding:20px}
+.sg__sign b{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:3px}
+.sg__sign-line{font-family:var(--font-mono);font-size:12.5px}
+
+.sg__map{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.sg__map-col{display:grid;gap:6px;align-content:start}
+.sg__map-col b{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+.sg__map-col .sg__part{font-family:var(--font-mono);font-size:12px;text-align:left}
+
+.sg__data{
+  border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0;
+  font-family:var(--font-mono);font-size:12.5px;display:grid;gap:3px;min-height:110px;
+}
+.sg__data-line{white-space:pre;color:var(--muted)}
+.sg__pick{
+  border:1px solid var(--accent);border-radius:5px;background:transparent;color:var(--accent);
+  font:inherit;padding:1px 6px;cursor:pointer;
+}
+.sg__pick:hover{background:var(--accent);color:var(--on-accent)}
+
+@media (max-width:560px){ .sg__map{grid-template-columns:1fr} }
+
+/* Блок «Внешние сервисы»: телефон, экран блокировки, статистика, доска */
+
+.sg__phone-sms{border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  max-width:280px;margin:0 auto 14px}
+.sg__sms-head{background:var(--bg-soft);padding:8px;text-align:center;
+  font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.sg__sms-body{padding:18px 14px;font-size:14px;text-align:center;min-height:62px;
+  display:grid;place-items:center}
+
+.sg__lockscreen{
+  border:1px solid var(--line);border-radius:16px;padding:20px 14px;margin-bottom:14px;
+  min-height:130px;display:grid;gap:12px;align-content:center;justify-items:center;
+  background:var(--bg-soft);
+}
+.sg__clock{font-family:var(--font-display);font-size:2rem;letter-spacing:-.03em}
+.sg__push{background:var(--bg);border-radius:12px;padding:10px 14px;width:100%;
+  display:grid;gap:3px;animation:sgPop .2s var(--ease)}
+.sg__push b{font-size:12.5px}
+.sg__push span{font-size:13px;color:var(--muted)}
+.sg__ask{border:1px solid var(--accent);border-radius:12px;padding:14px;margin-bottom:10px}
+.sg__ask > span{display:block;font-size:14px;margin-bottom:12px}
+
+.sg__stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:8px;margin-bottom:14px}
+.sg__stat{border:1px solid var(--line);border-radius:10px;padding:12px 8px;text-align:center}
+.sg__stat b{display:block;font-family:var(--font-display);font-size:1.4rem;letter-spacing:-.03em}
+.sg__stat span{font-size:11.5px;color:var(--muted)}
+
+.sg__domain{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;
+  font-family:var(--font-mono);font-size:14px}
+.sg__badge{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  border:1px solid var(--line);border-radius:100px;padding:3px 10px}
+.sg__badge.is-ok{color:var(--accent);border-color:var(--accent)}
+
+.sg__loyal-card{border:1px solid var(--accent);border-radius:12px;padding:18px;
+  margin-bottom:14px;display:grid;gap:8px;justify-items:center}
+.sg__loyal-card b{font-size:13px;color:var(--muted);font-weight:400}
+.sg__loyal-pts{font-family:var(--font-display);font-size:1.8rem;color:var(--accent);letter-spacing:-.03em}
+
+.sg__till-row{display:flex;justify-content:space-between;align-items:center;
+  border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.sg__till-item{font-size:14px}
+.sg__till-sum{font-family:var(--font-mono);font-size:19px}
+.sg__till-sum.is-ok{color:var(--accent)}
+
+.sg__form-row{display:grid;gap:8px;margin-bottom:14px}
+.sg__field{border:1px solid var(--line);border-radius:10px;padding:12px 14px;transition:.25s var(--ease)}
+.sg__field b{display:block;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:5px}
+.sg__field span{font-size:13.5px;color:var(--muted)}
+.sg__field.is-ok{border-color:var(--accent)}
+.sg__field.is-ok span{color:var(--text)}
+
+.sg__board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.sg__col{border:1px dashed var(--line);border-radius:10px;padding:10px 8px;min-height:104px;
+  display:grid;gap:5px;align-content:start}
+.sg__col b{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+.sg__card-t{background:var(--bg-soft);border-radius:7px;padding:7px 8px;font-size:11.5px;
+  animation:sgPop .2s var(--ease)}
+
+@media (max-width:560px){ .sg__board{grid-template-columns:1fr} }
+.sg__loyal-cap{font-style:normal;font-family:var(--font-mono);font-size:10.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* Блоки «Аналитика» и «Языки»: воронка, таблица, документ, вывеска */
+
+.sg__funnel{display:grid;gap:6px;margin-bottom:14px}
+.sg__step-row{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center;
+  font-size:13px}
+.sg__step-name{color:var(--muted)}
+.sg__step-bar{height:14px;background:var(--accent);opacity:.55;border-radius:100px;
+  transition:width .5s var(--ease);min-width:2px}
+.sg__step-num{font-family:var(--font-mono);font-size:12.5px;white-space:nowrap}
+.sg__step-num i{font-style:normal;color:var(--accent)}
+.sg__step-row.is-worst .sg__step-bar{opacity:1}
+
+.sg__gear.is-sel{border-color:var(--accent)}
+
+.sg__table{border:1px solid var(--line);border-radius:10px;padding:6px 12px;margin:12px 0;
+  min-height:120px;display:grid;gap:1px;align-content:start}
+.sg__tr{display:flex;justify-content:space-between;gap:12px;padding:8px 0;
+  border-bottom:1px solid var(--line-soft);font-size:13.5px}
+.sg__tr:last-child{border-bottom:none}
+.sg__tr b{font-family:var(--font-mono);font-size:13px}
+.sg__tr--total{border-top:1px solid var(--line);margin-top:4px;color:var(--accent)}
+
+.sg__doc{border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:12px}
+.sg__doc b{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;
+  margin-bottom:8px;color:var(--muted)}
+.sg__doc p{margin:0;font-size:13.5px;line-height:1.6}
+
+.sg__sign-ar{font-size:44px;text-align:center;padding:22px;margin-bottom:12px;
+  border:1px solid var(--line);border-radius:10px;direction:rtl}
+.sg__word{font-family:var(--font-display);font-size:2rem;text-align:center;padding:20px;
+  margin-bottom:12px;border:1px solid var(--line);border-radius:10px;letter-spacing:-.02em}
+
+@media (max-width:560px){ .sg__step-row{grid-template-columns:110px 1fr auto;font-size:12px} }
+
+/* Блок «Отрасли»: бумага из чужого дела */
+.sg__paper{
+  border:1px solid var(--line);border-radius:8px;padding:18px 16px;margin-bottom:14px;
+  font-family:var(--font-mono);font-size:12.5px;line-height:1.7;min-height:76px;
+  display:grid;align-content:center;
+}
