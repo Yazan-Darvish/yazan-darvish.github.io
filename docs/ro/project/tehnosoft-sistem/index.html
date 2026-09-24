@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tehnosoft Sistem — Yazan Darvish</title>
+<meta name="description" content="Cea mai mare platformă de e-commerce din Moldova: peste 1,5M de produse și 1M de utilizatori. Scalată la peste 100.000 de utilizatori simultani.">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css?v=1790231635">
+</head>
+<body data-page="work">
+
+<header class="site-head">
+  <div class="shell site-head__in">
+    <a class="brand" href="/ro/">YAZAN<span>.</span></a>
+
+    <nav class="nav" data-nav aria-label="Meniu">
+      <a href="/ro/" >Acasă</a>
+      <a href="/ro/work/" aria-current="page">Proiecte</a>
+      <a href="/ro/skills/" >Competențe</a>
+      <a href="/ro/about/" >Despre mine</a>
+      <a href="/ro/contact/" >Contact</a>
+    </nav>
+
+    <div class="head-tools">
+      
+      <div class="lang" role="group" aria-label="Limba interfeței">
+        
+          <a href="/en/project/tehnosoft-sistem/" >EN</a>
+        
+          <a href="/ru/project/tehnosoft-sistem/" >RU</a>
+        
+          <a href="/ro/project/tehnosoft-sistem/" aria-current="true">RO</a>
+        
+      </div>
+      <button class="icon-btn" data-theme-toggle aria-label="Schimbă tema">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" data-burger aria-label="Meniu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main class="shell">
+  <section class="case-hero">
+    <p class="eyebrow"><a href="/ro/work/" style="color:inherit">← Toate proiectele</a></p>
+    <h1 class="display" style="font-size:clamp(2.6rem,8.5vw,6.5rem)">Tehnosoft Sistem</h1>
+
+    <div class="case-cover thumb-a">
+      <b>B</b>
+    </div>
+
+    <div class="case-meta">
+      
+        <div><span>Companie</span>Tehnosoft Sistem</div>
+      
+        <div><span>Rol</span>Senior Backend Engineer</div>
+      
+        <div><span>Scară</span>1,5M+ produse, 1M+ utilizatori</div>
+      
+        <div><span>Perioadă</span>2024 — prezent</div>
+      
+        <div><span>Rol</span>Unic inginer al proiectului</div>
+      
+        <div><span>Scară</span>41 de terminale, 32+ magazine</div>
+      
+    </div>
+  </section>
+
+  <section style="padding-top:50px">
+    <div class="kpi reveal">
+      
+        <div><b>100K+</b><span>utilizatori simultani, față de 10.000</span></div>
+      
+        <div><b>5×</b><span>încărcare mai rapidă a paginilor</span></div>
+      
+        <div><b>1.5M+</b><span>produse indexate și servite crawlerelor</span></div>
+      
+        <div><b>~10 sec</b><span>pentru finalizarea unei cumpărături</span></div>
+      
+        <div><b>3×</b><span>creșterea comenzilor de la terminale</span></div>
+      
+        <div><b>50%+</b><span>din cumpărăturile din magazine trec prin self-service</span></div>
+      
+        <div><b>2–5 min</b><span>recuperare medie după un incident</span></div>
+      
+    </div>
+
+    <div class="prose">
+      
+        <h2>Platforma: problema</h2>
+        
+        <p>Cea mai mare platformă de e-commerce din țară atinsese un plafon: la 10.000 de utilizatori simultani paginile se încărcau greu, căutarea într-un catalog de peste 1,5M de produse era lentă, iar zilele de reduceri deveneau un risc pentru întreaga rețea.</p>
+        
+        
+      
+        <h2>Platforma: ce am făcut</h2>
+        
+        
+        
+        
+          <ul><li>Caching Redis pe mai multe niveluri — de la obiectele de catalog la fragmente de pagină.</li><li>Elasticsearch cu strategie regândită de interogări și indexuri.</li><li>Operațiunile grele mutate în cozi asincrone — Kafka și RabbitMQ.</li><li>Scalare orizontală în Kubernetes, cu CI/CD și monitorizare prin Sentry.</li><li>Infrastructură SEO scalabilă: traficul crawlerelor și indexarea a peste 1,5M de produse.</li><li>Sistem de livrare construit de la zero, cu urmărire în timp real.</li><li>AI Visual Search: căutarea produsului după fotografie, construită intern.</li><li>Asistent AI pentru cumpărători, care automatizează suportul.</li></ul>
+        
+      
+        <h2>Platforma: rezultatul</h2>
+        
+        
+        
+        
+          <ul><li>Platforma susține peste 100.000 de utilizatori simultani — de zece ori mai mult.</li><li>Viteza paginilor individuale a crescut de până la 5×.</li><li>Funcționalitățile AI rulează în producție, pe trafic real, nu într-un mediu demo.</li></ul>
+        
+      
+        <h2>Self-checkout: problema</h2>
+        
+        <p>Magazinele fizice puteau vinde doar ce se afla pe raft, iar coada de la casă consuma conversia. Era nevoie de o casă de self-service care acceptă carduri și numerar, tipărește bon fiscal și vinde întregul catalog al rețelei.</p>
+        
+        
+      
+        <h2>Self-checkout: ce am făcut</h2>
+        
+        <p>Am proiectat, construit și lansat întregul sistem ca unic inginer — de la protocoalele hardware până la operarea flotei în producție.</p>
+        
+        
+          <ul><li>Integrare cu terminale bancare (Arcus), imprimante fiscale (Datecs) și acceptoare de bancnote (CashCode) prin SerialPort.</li><li>Client de terminal pe Electron, peste backendul comun al platformei.</li><li>Introducerea datelor clientului prin cod QR — cumpărătorul nu tastează nimic manual.</li><li>Scanarea produselor pe loc și comandă din întregul catalog al rețelei.</li><li>Monitorizare și healthcheck pentru toate cele 41 de terminale, diagnosticare la distanță.</li></ul>
+        
+      
+        <h2>Self-checkout: rezultatul</h2>
+        
+        
+        
+        
+          <ul><li>41 de terminale în peste 32 de magazine rulează în producție.</li><li>Finalizarea cumpărăturii durează circa 10 secunde.</li><li>Comenzile de la terminale s-au triplat; peste jumătate din cumpărături trec prin self-service.</li><li>Orice locație vinde întregul catalog de peste 1,5M de produse.</li><li>Incidente mai rar de o dată pe lună, recuperare medie 2–5 minute.</li></ul>
+        
+      
+
+      
+      <blockquote class="quote">Iau singur deciziile de arhitectură și răspund pentru ele în producție.</blockquote>
+    </div>
+  </section>
+
+  
+</main>
+
+<div class="preview" data-preview aria-hidden="true"><div class="preview__inner"></div></div>
+
+
+
+<section class="cta" id="contact">
+  <div class="shell">
+    <p class="eyebrow" style="justify-content:center">Deschis la oferte</p>
+    <h2 class="section-title" style="margin-bottom:30px">Scrie-mi</h2>
+    <a class="mail" href="mailto:azandarvis@gmail.com">azandarvis@gmail.com</a>
+    <div class="socials">
+      <a href="tel:+37367355373">+373 67 355 373</a>
+      <a href="https://t.me/azandarvis" target="_blank" rel="noopener">Telegram @azandarvis</a>
+      <a href="https://linkedin.com/in/yazan-in" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-foot">
+  <div class="shell site-foot__in">
+    <span>© 2026 Yazan Darvish · Toate proiectele în producție</span>
+    <span>Chișinău · GMT+2</span>
+  </div>
+</footer>
+
+
+<script id="ui-form" type="application/json">{"name": "Numele tău", "name_ph": "Nume și companie", "email": "Emailul tău", "email_ph": "name@company.com", "message": "Mesaj", "message_ph": "Câteva rânduri despre rol, proiect sau sarcină", "submit": "Trimite", "sending": "Se trimite…", "ok": "Mulțumesc, mesajul a fost trimis. Răspund în aceeași zi lucrătoare.", "fail": "Trimiterea a eșuat. Te rog scrie la azandarvis@gmail.com", "err_name": "Introdu numele", "err_email": "Introdu un email valid", "err_message": "Scrie măcar câteva propoziții", "mic_start": "Dictează mesajul", "mic_stop": "Oprește înregistrarea", "mic_listening": "Ascult… poți vorbi", "mic_denied": "Browserul a blocat accesul la microfon", "mic_hint": "Mai rapid decât să scrii", "mic_lang": "ro-RO"}</script>
+<script id="ui-game" type="application/json">{"hint": "Clic — debug mode", "badge": "Debug mode", "badge_sub": "mini-joc · respinge bug-urile", "uptime": "Uptime", "wave": "Val", "killed": "Eliminate", "controls": "Mouse — țintă · clic — foc · 1–5 — armă · Esc — ieșire", "wave_start": "Val", "win": "Producția a rezistat", "lose": "Producția a căzut", "result_uptime": "Uptime", "result_kills": "Bug-uri eliminate", "best": "Record", "again": "Din nou", "close": "Ieșire", "upgrade_title": "Îmbunătățire armă", "upgrade_hint": "10 bug-uri eliminate — alege ce îmbunătățești", "level": "Niv.", "maxed": "Maxim", "weapons": [{"key": "PHP", "desc": "Arma principală", "up": "Trage mai des, lovește mai tare"}, {"key": "Python", "desc": "Autoghidare", "up": "Ghidare mai precisă, răcire mai scurtă"}, {"key": "SQL", "desc": "Îngheață", "up": "Îngheață mai mult, răcire mai scurtă"}, {"key": "JS", "desc": "Evantai", "up": "Mai multe proiectile pe foc"}, {"key": "Flutter", "desc": "Străpunge toate platformele", "up": "Răcire mai scurtă, daune mai mari"}]}</script>
+<script src="/static/js/game.js?v=1790231635"></script>
+<script src="/static/js/main.js?v=1790231635"></script>
+</body>
+</html>

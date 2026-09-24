@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tehnosoft Sistem — Yazan Darvish</title>
+<meta name="description" content="Moldova’s largest e-commerce platform: 1.5M+ products, 1M+ users. Scaled to 100,000+ concurrent users.">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css?v=1790231635">
+</head>
+<body data-page="work">
+
+<header class="site-head">
+  <div class="shell site-head__in">
+    <a class="brand" href="/en/">YAZAN<span>.</span></a>
+
+    <nav class="nav" data-nav aria-label="Menu">
+      <a href="/en/" >Home</a>
+      <a href="/en/work/" aria-current="page">Work</a>
+      <a href="/en/skills/" >Skills</a>
+      <a href="/en/about/" >About</a>
+      <a href="/en/contact/" >Contact</a>
+    </nav>
+
+    <div class="head-tools">
+      
+      <div class="lang" role="group" aria-label="Interface language">
+        
+          <a href="/en/project/tehnosoft-sistem/" aria-current="true">EN</a>
+        
+          <a href="/ru/project/tehnosoft-sistem/" >RU</a>
+        
+          <a href="/ro/project/tehnosoft-sistem/" >RO</a>
+        
+      </div>
+      <button class="icon-btn" data-theme-toggle aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" data-burger aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main class="shell">
+  <section class="case-hero">
+    <p class="eyebrow"><a href="/en/work/" style="color:inherit">← All projects</a></p>
+    <h1 class="display" style="font-size:clamp(2.6rem,8.5vw,6.5rem)">Tehnosoft Sistem</h1>
+
+    <div class="case-cover thumb-a">
+      <b>B</b>
+    </div>
+
+    <div class="case-meta">
+      
+        <div><span>Company</span>Tehnosoft Sistem</div>
+      
+        <div><span>Role</span>Senior Backend Engineer</div>
+      
+        <div><span>Scale</span>1.5M+ products, 1M+ users</div>
+      
+        <div><span>Period</span>2024 — present</div>
+      
+        <div><span>Role</span>Sole engineer on the project</div>
+      
+        <div><span>Scale</span>41 terminals, 32+ stores</div>
+      
+    </div>
+  </section>
+
+  <section style="padding-top:50px">
+    <div class="kpi reveal">
+      
+        <div><b>100K+</b><span>concurrent users, up from 10,000</span></div>
+      
+        <div><b>5×</b><span>faster individual page loads</span></div>
+      
+        <div><b>1.5M+</b><span>products indexed and served to crawlers</span></div>
+      
+        <div><b>~10 sec</b><span>to complete an in-store purchase</span></div>
+      
+        <div><b>3×</b><span>growth in terminal orders</span></div>
+      
+        <div><b>50%+</b><span>of in-store purchases go through self-service</span></div>
+      
+        <div><b>2–5 min</b><span>average recovery after an outage</span></div>
+      
+    </div>
+
+    <div class="prose">
+      
+        <h2>Platform: the problem</h2>
+        
+        <p>The country’s largest e-commerce platform had hit a ceiling: at 10,000 concurrent users pages were slow, search across a 1.5M+ product catalog was heavy, and peak sale days turned into a risk for the whole network.</p>
+        
+        
+      
+        <h2>Platform: what I did</h2>
+        
+        
+        
+        
+          <ul><li>Layered Redis caching — from catalog objects to ready-made page fragments.</li><li>Elasticsearch with a reworked query and index strategy, replacing the previous search.</li><li>Heavy operations moved into async queues — Kafka and RabbitMQ.</li><li>Horizontal scaling in Kubernetes with CI/CD and Sentry monitoring.</li><li>Scalable SEO infrastructure: crawler traffic and indexing of 1.5M+ products.</li><li>A delivery system built from scratch, with real-time order tracking.</li><li>AI Visual Search: product lookup by photo, built in-house.</li><li>An AI shopping assistant automating customer support.</li></ul>
+        
+      
+        <h2>Platform: the outcome</h2>
+        
+        
+        
+        
+          <ul><li>The platform holds 100,000+ concurrent users — ten times the previous limit.</li><li>Individual page speed improved by up to 5×.</li><li>AI features run in production on real traffic, not in a demo environment.</li></ul>
+        
+      
+        <h2>Self-checkout: the problem</h2>
+        
+        <p>Physical stores could only sell what sat on the shelf, and the checkout queue ate conversion. The company needed a self-service till that accepts cards and cash, prints a fiscal receipt, and sells the entire network catalog.</p>
+        
+        
+      
+        <h2>Self-checkout: what I did</h2>
+        
+        <p>I designed, built and shipped the whole system as its sole engineer — from hardware protocols to running the fleet in production.</p>
+        
+        
+          <ul><li>Integration with bank terminals (Arcus), fiscal printers (Datecs) and bill acceptors (CashCode) over SerialPort.</li><li>An Electron terminal client on top of the platform’s shared backend.</li><li>QR-based customer data entry — the buyer types nothing by hand.</li><li>On-the-spot product scanning and ordering from the full network catalog.</li><li>Monitoring and healthchecks across all 41 terminals, remote diagnostics and updates.</li></ul>
+        
+      
+        <h2>Self-checkout: the outcome</h2>
+        
+        
+        
+        
+          <ul><li>41 terminals across 32+ stores running in production.</li><li>Checkout takes around 10 seconds.</li><li>Terminal orders tripled; more than half of in-store purchases go through self-service.</li><li>Any location sells the full 1.5M+ catalog instead of only its shelf stock.</li><li>Outages under once a month network-wide, average recovery 2–5 minutes.</li></ul>
+        
+      
+
+      
+      <blockquote class="quote">I make the architecture calls myself and answer for them in production.</blockquote>
+    </div>
+  </section>
+
+  
+</main>
+
+<div class="preview" data-preview aria-hidden="true"><div class="preview__inner"></div></div>
+
+
+
+<section class="cta" id="contact">
+  <div class="shell">
+    <p class="eyebrow" style="justify-content:center">Open to offers</p>
+    <h2 class="section-title" style="margin-bottom:30px">Get in touch</h2>
+    <a class="mail" href="mailto:azandarvis@gmail.com">azandarvis@gmail.com</a>
+    <div class="socials">
+      <a href="tel:+37367355373">+373 67 355 373</a>
+      <a href="https://t.me/azandarvis" target="_blank" rel="noopener">Telegram @azandarvis</a>
+      <a href="https://linkedin.com/in/yazan-in" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-foot">
+  <div class="shell site-foot__in">
+    <span>© 2026 Yazan Darvish · All projects in production</span>
+    <span>Chișinău · GMT+2</span>
+  </div>
+</footer>
+
+
+<script id="ui-form" type="application/json">{"name": "Your name", "name_ph": "Name and company", "email": "Your email", "email_ph": "name@company.com", "message": "Message", "message_ph": "A few lines about the role, project or task", "submit": "Send", "sending": "Sending…", "ok": "Thank you, the message is sent. I reply within the working day.", "fail": "Sending failed. Please write to azandarvis@gmail.com", "err_name": "Please enter your name", "err_email": "Please enter a valid email", "err_message": "Please write at least a couple of sentences", "mic_start": "Dictate the message", "mic_stop": "Stop recording", "mic_listening": "Listening… go ahead", "mic_denied": "The browser blocked microphone access", "mic_hint": "Faster than typing", "mic_lang": "en-US"}</script>
+<script id="ui-game" type="application/json">{"hint": "Click — debug mode", "badge": "Debug mode", "badge_sub": "mini-game · fight off the bugs", "uptime": "Uptime", "wave": "Wave", "killed": "Killed", "controls": "Mouse — aim · click — fire · 1–5 — weapon · Esc — exit", "wave_start": "Wave", "win": "Production survived", "lose": "Production is down", "result_uptime": "Uptime", "result_kills": "Bugs killed", "best": "Best", "again": "Play again", "close": "Exit", "upgrade_title": "Weapon upgrade", "upgrade_hint": "10 bugs down — pick what to level up", "level": "LVL", "maxed": "Maxed", "weapons": [{"key": "PHP", "desc": "Main gun", "up": "Faster fire, harder hits"}, {"key": "Python", "desc": "Homing", "up": "Tighter tracking, shorter cooldown"}, {"key": "SQL", "desc": "Freeze", "up": "Longer freeze, shorter cooldown"}, {"key": "JS", "desc": "Spread", "up": "More pellets per shot"}, {"key": "Flutter", "desc": "Pierces every platform", "up": "Shorter cooldown, more damage"}]}</script>
+<script src="/static/js/game.js?v=1790231635"></script>
+<script src="/static/js/main.js?v=1790231635"></script>
+</body>
+</html>

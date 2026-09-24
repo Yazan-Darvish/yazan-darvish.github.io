@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Обо мне — Yazan Darvish</title>
+<meta name="description" content="Опыт, стек и образование Senior Backend Engineer.">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css?v=1790231635">
+</head>
+<body data-page="about">
+
+<header class="site-head">
+  <div class="shell site-head__in">
+    <a class="brand" href="/ru/">YAZAN<span>.</span></a>
+
+    <nav class="nav" data-nav aria-label="Меню">
+      <a href="/ru/" >Главная</a>
+      <a href="/ru/work/" >Проекты</a>
+      <a href="/ru/skills/" >Навыки</a>
+      <a href="/ru/about/" aria-current="page">Обо мне</a>
+      <a href="/ru/contact/" >Контакты</a>
+    </nav>
+
+    <div class="head-tools">
+      
+      <div class="lang" role="group" aria-label="Язык интерфейса">
+        
+          <a href="/en/about/" >EN</a>
+        
+          <a href="/ru/about/" aria-current="true">RU</a>
+        
+          <a href="/ro/about/" >RO</a>
+        
+      </div>
+      <button class="icon-btn" data-theme-toggle aria-label="Переключить тему">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" data-burger aria-label="Меню" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main class="shell">
+  <section style="padding-bottom:20px">
+    <p class="eyebrow">Обо мне</p>
+    <h1 class="display" style="font-size:clamp(2.6rem,8vw,6rem)">Yazan<br>Darvish</h1>
+    <div class="hero__row">
+      <div class="hero__meta">
+        <div><span>Должность</span><b>Senior Backend Engineer</b></div>
+        <div><span>Опыт</span><b>10+ лет</b></div>
+        <div><span>Где</span><b>Кишинёв, Молдова</b></div>
+      </div>
+      <button class="btn btn--accent" type="button" onclick="window.print()">Скачать CV в PDF</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="two-col">
+      <div class="reveal">
+        <p class="eyebrow">Коротко</p>
+        <h2 class="section-title">Отвечаю за то,<br>что работает<br>в продакшене</h2>
+      </div>
+      <div class="reveal">
+        <p class="lead" style="margin-top:0">Senior Backend Engineer, 10+ лет. Платформа на 1.5M товаров держит 100 000+ одновременных пользователей, отдельные страницы стали быстрее до 5 раз. AI-интеграции и разработка — поиск по фото и ассистент поддержки работают на реальном трафике, а не в демо.</p>
+        <p class="lead">PHP / Laravel · высоконагруженный e-commerce, платёжное оборудование и AI в продакшене</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Опыт работы</p>
+    <div class="timeline reveal">
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Март 2024 — сейчас</div>
+          <div>
+            <h3>Senior Software Engineer</h3>
+            <p class="tl-item__where">Tehnosoft Sistem · Кишинёв, Молдова · Гибрид · повышение с Senior Software Developer, сентябрь 2025</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Холдинг e-commerce и ритейл-брендов в Молдове и Румынии. Отвечаю за платформу Bomba.md (1.5M+ товаров, 1M+ пользователей) и системы самообслуживания компании.</p>
+            <ul>
+              
+              <li>Масштабировал платформу с 10 000 до 100 000+ одновременных пользователей, скорость страниц выросла до 5×: кэширование на Redis, Elasticsearch с переработанной стратегией запросов, асинхронные очереди (Kafka, RabbitMQ), горизонтальное масштабирование в Kubernetes.</li><li>Спроектировал, построил и вывел в продакшен систему самообслуживания как её единственный инженер: 41 терминал в 32+ магазинах.</li><li>Эксплуатирую парк в продакшене: мониторинг и healthcheck по всем 41 терминалу, удалённая диагностика и обновления без выездов.</li><li>Сократил оформление до ~10 секунд — данные клиента считываются по QR-коду.</li><li>Снял зависимость магазинов от складского остатка: любая точка продаёт весь каталог в 1.5M+ товаров. Заказы через терминалы выросли в 3 раза.</li><li>Своими силами построил AI Visual Search и интегрировал AI-ассистента поддержки.</li><li>С нуля спроектировал систему доставки и масштабируемую SEO-инфраструктуру.</li><li>Единственный инженер на терминальной платформе; в команде делаю code review, менторю мидл- и джуниор-разработчиков, участвую в технических собеседованиях.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> PHP, Laravel, Symfony, CodeIgniter 3, OpenCart, Bitrix, MySQL, PostgreSQL, Redis, Elasticsearch, Algolia, Microservices, Kafka, RabbitMQ, Docker, Kubernetes, CI/CD, AWS, Sentry, PHPUnit, Vue.js, React, Node.js, Electron, OpenAI API</p>
+            
+              <div class="link-list">
+                
+                  <a href="https://bomba.md" target="_blank" rel="noopener">bomba.md</a>
+                
+                  <a href="https://sportlandia.md" target="_blank" rel="noopener">sportlandia.md</a>
+                
+                  <a href="https://tehnotrend.md" target="_blank" rel="noopener">tehnotrend.md</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Март 2023 — март 2024</div>
+          <div>
+            <h3>Senior Software Developer</h3>
+            <p class="tl-item__where">Unde.md · Кишинёв, Молдова · Гибрид</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Турецкий стартап — классифайды и маркетплейс (Турция, Великобритания). Рабочий язык — английский.</p>
+            <ul>
+              
+              <li>Разрабатывал бэкенд на PHP: категории, фильтры и поиск по объявлениям. Нагрузочное тестирование до 10M пользователей без деградации.</li><li>Сделал кабинет продавца и чат покупатель–продавец в реальном времени.</li><li>Выпустил кроссплатформенное приложение на Flutter в App Store и Google Play.</li><li>Менторил коллег по веб-разработке и тестированию.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> PHP, Symfony, Laravel, Yii2, MySQL, Docker, Flutter</p>
+            
+              <div class="link-list">
+                
+                  <a href="https://unde.md" target="_blank" rel="noopener">unde.md</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Август 2022 — март 2023</div>
+          <div>
+            <h3>Senior Software Developer</h3>
+            <p class="tl-item__where">Amigo · Кишинёв, Молдова · Гибрид</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Молдавский маркетплейс (Молдова, США).</p>
+            <ul>
+              
+              <li>Построил систему обработки каталога на 1M+ записей без деградации.</li><li>Перевёл каталог с JSON на SQL и оптимизировал запросы.</li><li>Запустил сайт с нуля и сделал Flutter-приложение для iOS и Android.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> Laravel, PHP, MySQL, PostgreSQL, Flutter</p>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Февраль 2020 — август 2022</div>
+          <div>
+            <h3>Senior Software Developer</h3>
+            <p class="tl-item__where">Prestacall SRL · Кишинёв, Молдова · В офисе</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Elwood Transport — платформа логистики и перевозок для французских клиентов (Франция, Великобритания).</p>
+            <ul>
+              
+              <li>Автоматизировал управление заказами и отслеживание отгрузок: сотни заказов в день.</li><li>Оптимизировал запросы к БД и интеграции под высокую нагрузку.</li><li>С нуля построил Flutter-приложение для автопарка из 100+ водителей.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> Laravel, PHP, MySQL, Flutter, Dart</p>
+            
+              <div class="link-list">
+                
+                  <a href="https://elwoodtransport.com" target="_blank" rel="noopener">elwoodtransport.com</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Июнь 2018 — февраль 2020</div>
+          <div>
+            <h3>Full Stack Developer</h3>
+            <p class="tl-item__where">DIS Software · Кишинёв, Молдова · В офисе</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Веб- и мобильная разработка для клиентов в Молдове, Канаде и Великобритании.</p>
+            <ul>
+              
+              <li>Сдал 15+ клиентских проектов менее чем за 2 года: магазины, порталы, ERP.</li><li>Интегрировал ERP с платформами клиентов и автоматизировал обработку заказов.</li><li>Оптимизировал серверные процессы и запросы к БД.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> PHP, Laravel, Vue.js, JavaScript, MySQL</p>
+            
+              <div class="link-list">
+                
+                  <a href="https://man.md" target="_blank" rel="noopener">man.md</a>
+                
+                  <a href="https://cort.md" target="_blank" rel="noopener">cort.md</a>
+                
+                  <a href="https://petclub.md" target="_blank" rel="noopener">petclub.md</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Январь 2017 — июнь 2018</div>
+          <div>
+            <h3>Full Stack Developer</h3>
+            <p class="tl-item__where">Crawless Pte. Ltd. · Кишинёв, Молдова · В офисе</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Распределённый сбор данных и автоматизация для клиентов из Великобритании, США, Молдовы и Румынии.</p>
+            <ul>
+              
+              <li>Построил распределённую инфраструктуру скрейпинга на edge computing: ~20 источников, 15 000+ страниц в сутки.</li><li>Автоматизировал обработку заказов для американского дропшиппинг-клиента, убрав 80–90% ручной работы.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> PHP, Laravel, Python, Node.js, PostgreSQL, Docker</p>
+            
+              <div class="link-list">
+                
+                  <a href="https://crawless.com" target="_blank" rel="noopener">crawless.com</a>
+                
+                  <a href="https://greenshop.md" target="_blank" rel="noopener">greenshop.md</a>
+                
+                  <a href="https://veloxi.md" target="_blank" rel="noopener">veloxi.md</a>
+                
+              </div>
+            
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Май 2015 — январь 2017</div>
+          <div>
+            <h3>Full Stack Developer / Web Designer</h3>
+            <p class="tl-item__where">Upwork · Удалённо · Фриланс</p>
+            <p style="color:var(--muted);margin:0 0 12px;font-size:15.5px">Клиенты из Молдовы, США, Великобритании, Канады и Кувейта.</p>
+            <ul>
+              
+              <li>Лендинги, вёрстка шаблонов и сайты на WordPress, веб- и логотип-дизайн, JavaScript-анимации.</li>
+            </ul>
+            <p class="tl-item__stack"><b>Stack:</b> PHP, WordPress, JavaScript, HTML/CSS</p>
+            
+          </div>
+        </article>
+      
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow reveal">Образование и языки</p>
+    <div class="timeline reveal">
+      
+        <article class="tl-item">
+          <div class="tl-item__when">2017 — 2018</div>
+          <div>
+            <h3>Технический университет Молдовы</h3>
+            <p class="tl-item__where">Компьютерные и информационные науки</p>
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Родные</div>
+          <div>
+            <h3>Русский · Румынский</h3>
+            <p class="tl-item__where">Свободно</p>
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Рабочий</div>
+          <div>
+            <h3>Английский</h3>
+            <p class="tl-item__where">Профессиональный уровень</p>
+          </div>
+        </article>
+      
+        <article class="tl-item">
+          <div class="tl-item__when">Базовые</div>
+          <div>
+            <h3>Арабский · Украинский</h3>
+            <p class="tl-item__where">Базовый уровень</p>
+          </div>
+        </article>
+      
+    </div>
+  </section>
+</main>
+
+
+
+<section class="cta" id="contact">
+  <div class="shell">
+    <p class="eyebrow" style="justify-content:center">Открыт к предложениям</p>
+    <h2 class="section-title" style="margin-bottom:30px">Напишите мне</h2>
+    <a class="mail" href="mailto:azandarvis@gmail.com">azandarvis@gmail.com</a>
+    <div class="socials">
+      <a href="tel:+37367355373">+373 67 355 373</a>
+      <a href="https://t.me/azandarvis" target="_blank" rel="noopener">Telegram @azandarvis</a>
+      <a href="https://linkedin.com/in/yazan-in" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-foot">
+  <div class="shell site-foot__in">
+    <span>© 2026 Yazan Darvish · Все проекты в продакшене</span>
+    <span>Chișinău · GMT+2</span>
+  </div>
+</footer>
+
+
+<script id="ui-form" type="application/json">{"name": "Как вас зовут", "name_ph": "Имя и компания", "email": "Ваша почта", "email_ph": "name@company.com", "message": "Сообщение", "message_ph": "Коротко о задаче, вакансии или проекте", "submit": "Отправить", "sending": "Отправляю…", "ok": "Спасибо, сообщение отправлено. Отвечу в течение рабочего дня.", "fail": "Не получилось отправить. Напишите напрямую на azandarvis@gmail.com", "err_name": "Укажите имя", "err_email": "Укажите корректную почту", "err_message": "Напишите хотя бы пару предложений", "mic_start": "Надиктовать сообщение", "mic_stop": "Остановить запись", "mic_listening": "Слушаю… говорите", "mic_denied": "Браузер не дал доступ к микрофону", "mic_hint": "Быстрее, чем печатать", "mic_lang": "ru-RU"}</script>
+<script id="ui-game" type="application/json">{"hint": "Клик — debug mode", "badge": "Debug mode", "badge_sub": "мини-игра · отбей атаку багов", "uptime": "Uptime", "wave": "Волна", "killed": "Убито", "controls": "Мышь — прицел · клик — огонь · 1–5 — оружие · Esc — выход", "wave_start": "Волна", "win": "Прод выстоял", "lose": "Прод упал", "result_uptime": "Uptime", "result_kills": "Убито багов", "best": "Рекорд", "again": "Ещё раз", "close": "Выйти", "upgrade_title": "Апгрейд оружия", "upgrade_hint": "10 багов убито — выберите, что прокачать", "level": "Ур.", "maxed": "Максимум", "weapons": [{"key": "PHP", "desc": "Основная пушка", "up": "Чаще стреляет, больнее бьёт"}, {"key": "Python", "desc": "Самонаведение", "up": "Цепче наводится, короче откат"}, {"key": "SQL", "desc": "Заморозка", "up": "Дольше держит, короче откат"}, {"key": "JS", "desc": "Веер", "up": "Больше снарядов в залпе"}, {"key": "Flutter", "desc": "Бьёт через все платформы", "up": "Короче откат, выше урон"}]}</script>
+<script src="/static/js/game.js?v=1790231635"></script>
+<script src="/static/js/main.js?v=1790231635"></script>
+</body>
+</html>

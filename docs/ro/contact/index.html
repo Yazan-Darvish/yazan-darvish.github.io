@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ro" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Yazan Darvish</title>
+<meta name="description" content="Email, telefon, Telegram, LinkedIn și CV în PDF în trei limbi.">
+<link rel="icon" href="/static/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/style.css?v=1790231635">
+</head>
+<body data-page="contact">
+
+<header class="site-head">
+  <div class="shell site-head__in">
+    <a class="brand" href="/ro/">YAZAN<span>.</span></a>
+
+    <nav class="nav" data-nav aria-label="Meniu">
+      <a href="/ro/" >Acasă</a>
+      <a href="/ro/work/" >Proiecte</a>
+      <a href="/ro/skills/" >Competențe</a>
+      <a href="/ro/about/" >Despre mine</a>
+      <a href="/ro/contact/" aria-current="page">Contact</a>
+    </nav>
+
+    <div class="head-tools">
+      
+      <div class="lang" role="group" aria-label="Limba interfeței">
+        
+          <a href="/en/contact/" >EN</a>
+        
+          <a href="/ru/contact/" >RU</a>
+        
+          <a href="/ro/contact/" aria-current="true">RO</a>
+        
+      </div>
+      <button class="icon-btn" data-theme-toggle aria-label="Schimbă tema">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn burger" data-burger aria-label="Meniu" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="M4 8h16M4 16h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<main>
+  <section class="shell" style="padding-bottom:30px">
+    <p class="eyebrow">Contact</p>
+    <h1 class="display" style="font-size:clamp(2.6rem,8vw,6rem)">Hai să<br>vorbim</h1>
+    <p class="lead" style="margin-top:26px">Răspund în aceeași zi lucrătoare. Emailul și Telegram funcționează la fel de bine — alege ce îți este mai comod.</p>
+  </section>
+
+  <section class="shell" style="padding-top:0">
+    <div class="two-col">
+      <div class="reveal">
+        <p class="eyebrow">Canale</p>
+        <div class="contact-list">
+          <a href="mailto:azandarvis@gmail.com"><span>Email</span><b>azandarvis@gmail.com</b>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="tel:+37367355373"><span>Telefon</span><b>+373 67 355 373</b>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://t.me/azandarvis" target="_blank" rel="noopener">
+            <span>Telegram</span><b>@azandarvis</b>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="https://linkedin.com/in/yazan-in" target="_blank" rel="noopener">
+            <span>LinkedIn</span><b>linkedin.com/in/yazan-in</b>
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <p class="eyebrow">Pentru echipele de recrutare</p>
+        <div class="facts">
+          
+            <div><span>Locație</span><b>Chișinău, Moldova · GMT+2</b></div>
+          
+            <div><span>Cetățenie</span><b>UE — fără necesitate de sponsorizare de viză</b></div>
+          
+            <div><span>Format de lucru</span><b>Remote, hibrid sau relocare</b></div>
+          
+            <div><span>Limbi</span><b>Rusă și română native · engleză la nivel profesional · arabă și ucraineană de bază</b></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-band">
+    <div class="shell">
+      <div class="form-band__in reveal">
+        <div>
+          <h2 class="section-title">Scrie direct</h2>
+          <p class="lead" style="margin-top:18px">Completează formularul — mesajul ajunge pe emailul meu.</p>
+          <div class="link-list" style="margin-top:26px">
+            <a href="mailto:azandarvis@gmail.com">azandarvis@gmail.com</a>
+            <a href="https://t.me/azandarvis" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </div>
+
+        <form class="form" data-form action="/api/message/" method="post" novalidate>
+          <input type="hidden" name="csrfmiddlewaretoken" value="4wYAXNgHQRC8Rbox3SKDJ3JKwLfkvQFf1mfs0BKKgDQVSKJZtBTYbfKXlzx8fh9y">
+          <input type="hidden" name="lang" value="ro">
+          <label class="field"><span>Numele tău</span>
+            <input id="f-name" name="name" type="text" placeholder="Nume și companie">
+            <em class="field__err" hidden></em></label>
+
+          <label class="field"><span>Emailul tău</span>
+            <input id="f-email" name="email" type="email" placeholder="name@company.com">
+            <em class="field__err" hidden></em></label>
+
+          <label class="field"><span>Mesaj</span>
+            <textarea id="f-text" name="text" rows="5" placeholder="Câteva rânduri despre rol, proiect sau sarcină"></textarea>
+            <em class="field__err" hidden></em></label>
+
+          <div class="form-actions">
+            <div class="mic-row" data-mic-row hidden>
+              <button class="mic" type="button" data-mic>
+                <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg>
+                <span data-mic-label>Dictează mesajul</span>
+              </button>
+              <div class="viz" data-viz hidden aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <em class="mic-hint" data-mic-hint>Mai rapid decât să scrii</em>
+            </div>
+
+            <button class="btn btn--accent" type="submit">Trimite</button>
+          </div>
+          <p class="form__status" data-form-status hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell">
+    <div class="two-col">
+      <div class="reveal">
+        <p class="eyebrow">Descarcă CV</p>
+        <h2 class="section-title">PDF</h2>
+      </div>
+      <div class="reveal">
+        <p class="lead" style="margin-top:0">CV-ul complet într-un singur fișier — același conținut ca pe pagina Despre mine.</p>
+        <div class="link-list">
+          <a href="/media/cv/Yazan_Darvish_Senior_Backend_Engineer_CV_EN.pdf" download>English — PDF</a><a href="/media/cv/Yazan_Darvish_Senior_Backend_Engineer_CV_RU.pdf" download>Русский — PDF</a><a href="/media/cv/Yazan_Darvish_Senior_Backend_Engineer_CV_RO.pdf" download>Română — PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<section class="cta" id="contact">
+  <div class="shell">
+    <p class="eyebrow" style="justify-content:center">Deschis la oferte</p>
+    <h2 class="section-title" style="margin-bottom:30px">Scrie-mi</h2>
+    <a class="mail" href="mailto:azandarvis@gmail.com">azandarvis@gmail.com</a>
+    <div class="socials">
+      <a href="tel:+37367355373">+373 67 355 373</a>
+      <a href="https://t.me/azandarvis" target="_blank" rel="noopener">Telegram @azandarvis</a>
+      <a href="https://linkedin.com/in/yazan-in" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="site-foot">
+  <div class="shell site-foot__in">
+    <span>© 2026 Yazan Darvish · Toate proiectele în producție</span>
+    <span>Chișinău · GMT+2</span>
+  </div>
+</footer>
+
+
+<script id="ui-form" type="application/json">{"name": "Numele tău", "name_ph": "Nume și companie", "email": "Emailul tău", "email_ph": "name@company.com", "message": "Mesaj", "message_ph": "Câteva rânduri despre rol, proiect sau sarcină", "submit": "Trimite", "sending": "Se trimite…", "ok": "Mulțumesc, mesajul a fost trimis. Răspund în aceeași zi lucrătoare.", "fail": "Trimiterea a eșuat. Te rog scrie la azandarvis@gmail.com", "err_name": "Introdu numele", "err_email": "Introdu un email valid", "err_message": "Scrie măcar câteva propoziții", "mic_start": "Dictează mesajul", "mic_stop": "Oprește înregistrarea", "mic_listening": "Ascult… poți vorbi", "mic_denied": "Browserul a blocat accesul la microfon", "mic_hint": "Mai rapid decât să scrii", "mic_lang": "ro-RO"}</script>
+<script id="ui-game" type="application/json">{"hint": "Clic — debug mode", "badge": "Debug mode", "badge_sub": "mini-joc · respinge bug-urile", "uptime": "Uptime", "wave": "Val", "killed": "Eliminate", "controls": "Mouse — țintă · clic — foc · 1–5 — armă · Esc — ieșire", "wave_start": "Val", "win": "Producția a rezistat", "lose": "Producția a căzut", "result_uptime": "Uptime", "result_kills": "Bug-uri eliminate", "best": "Record", "again": "Din nou", "close": "Ieșire", "upgrade_title": "Îmbunătățire armă", "upgrade_hint": "10 bug-uri eliminate — alege ce îmbunătățești", "level": "Niv.", "maxed": "Maxim", "weapons": [{"key": "PHP", "desc": "Arma principală", "up": "Trage mai des, lovește mai tare"}, {"key": "Python", "desc": "Autoghidare", "up": "Ghidare mai precisă, răcire mai scurtă"}, {"key": "SQL", "desc": "Îngheață", "up": "Îngheață mai mult, răcire mai scurtă"}, {"key": "JS", "desc": "Evantai", "up": "Mai multe proiectile pe foc"}, {"key": "Flutter", "desc": "Străpunge toate platformele", "up": "Răcire mai scurtă, daune mai mari"}]}</script>
+<script src="/static/js/game.js?v=1790231635"></script>
+<script src="/static/js/main.js?v=1790231635"></script>
+</body>
+</html>
