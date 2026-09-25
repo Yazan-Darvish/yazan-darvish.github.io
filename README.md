@@ -1,58 +1,39 @@
 <div align="center">
 
-<img src="docs/static/img/photo-sm.jpg" width="140" alt="Yazan Darvish">
+<a href="https://yazan-darvish.github.io/"><img src=".github/readme/hero.png" alt="Yazan Darvish — Senior Backend Engineer"></a>
 
-# Yazan Darvish
+<br><br>
 
-**Senior Backend Engineer · PHP / Laravel · Кишинёв**
+<a href="https://yazan-darvish.github.io/"><img src="https://img.shields.io/badge/Открыть_сайт_→-ff4a1c?style=for-the-badge" alt="Открыть сайт"></a>
+<a href="https://yazan-darvish.github.io/ru/skills/"><img src="https://img.shields.io/badge/Сыграть_в_стек-17171b?style=for-the-badge" alt="Сыграть в стек"></a>
+<a href="https://yazan-darvish.github.io/ru/contact/"><img src="https://img.shields.io/badge/Резюме_PDF-17171b?style=for-the-badge" alt="Резюме PDF"></a>
 
-Высоконагруженный e-commerce, платёжное оборудование и AI в продакшене. Не в демо.
+<br><br>
 
-<a href="https://yazan-darvish.github.io/"><img src="https://img.shields.io/badge/открыть_сайт-yazan--darvish.github.io-ff4a1c?style=for-the-badge" alt="Открыть сайт"></a>
-
-[![Deploy to GitHub Pages](https://github.com/Yazan-Darvish/yazan-darvish.github.io/actions/workflows/pages.yml/badge.svg)](https://github.com/Yazan-Darvish/yazan-darvish.github.io/actions/workflows/pages.yml)
-![Зависимостей](https://img.shields.io/badge/зависимостей-0-ff4a1c)
-![Сборщик](https://img.shields.io/badge/сборщик-не_нужен-ff4a1c)
-![Языки сайта](https://img.shields.io/badge/EN_·_RU_·_RO-3_языка-ff4a1c)
-![Вес](https://img.shields.io/badge/весь_сайт-2.1_МБ-ff4a1c)
-
-[Главная](https://yazan-darvish.github.io/ru/) ·
-[Проекты](https://yazan-darvish.github.io/ru/work/) ·
-[Стек](https://yazan-darvish.github.io/ru/skills/) ·
-[Обо мне](https://yazan-darvish.github.io/ru/about/) ·
-[Контакты](https://yazan-darvish.github.io/ru/contact/)
-
-<br>
-
-| **10+** | **1.5M+** | **100K+** | **41** |
-|:---:|:---:|:---:|:---:|
-| лет в разработке | товаров в каталоге | одновременных пользователей | терминал самообслуживания в продакшене |
+<img src=".github/readme/stats.png" alt="10+ лет · 1.5M+ товаров · 100K+ пользователей · 41 терминал">
 
 </div>
 
----
+<br>
 
-## 🎮 Что это
+## Портфолио, которое можно потрогать
 
-Портфолио, которое не рассказывает о навыках, а **даёт их потрогать**.
+Вместо списка технологий — **92 навыка, и у каждого своя мини-игра**. Клик по пилюле открывает окно с бытовым сюжетом, понятным даже ребёнку. Название технологии появляется только в финале: «Это Laravel, и вот зачем он нужен».
 
-На странице [«Стек»](https://yazan-darvish.github.io/ru/skills/) 92 технологии, и у каждой своя мини-игра. Клик по любой — открывается окно, где бытовым сюжетом показано, зачем эта штука нужна.
+<a href="https://yazan-darvish.github.io/ru/skills/"><img src=".github/readme/games.png" alt="Страница «Стек» и мини-игра «Кухня»"></a>
 
-> **Правило жанра:** внутри игры нет ни одного термина. Сюжет понятен ребёнку, а название технологии появляется только в финальной плашке — «Это Laravel, и вот зачем он нужен».
-
-| Скилл | Игра | Что понимает человек |
+| | Игра | Суть за 10 секунд |
 |---|---|---|
-| **Laravel** | Кухня | один бургер: в пустой комнате 6 шагов, в готовой кухне 3 |
-| **PostgreSQL** | Всё или ничего | свет гаснет посреди перевода — деньги пропали или вернулись |
-| **Kubernetes** | Смотритель | домик упал в 3 ночи: лежит до утра или встал сам за две секунды |
-| **Elasticsearch** | Что внутри книги | по названиям ноль, по словам внутри — две книги |
-| **Datecs** | Чек уже в памяти | стереть нельзя, ошибку закрывают чеком возврата |
+| **Laravel** | Кухня | бургер в пустой комнате — 6 шагов, в готовой кухне — 3 |
+| **PostgreSQL** | Всё или ничего | свет гаснет посреди перевода: деньги пропали или вернулись |
+| **Kubernetes** | Смотритель | домик упал в 3 ночи: лежит до утра или встал сам |
+| **Kafka / RabbitMQ** | Лента и очередь | событие читают все — или задание забирает ровно один |
 | **CashCode** | Купюроприёмник | мятую выплюнуло, подозрительную не взяло, сдачу отсчитало |
 
-**71 уникальная игра, механики не повторяются:** последовательность шагов, бюджет веса, поток на таймере, соединение пар, рубильник, ползунок, ввод текста, ветвящийся диалог.
+**71 уникальная механика** — ни одна не повторяется: бюджет веса, поток на таймере, соединение пар, рубильник, ползунок, ветвящийся диалог.
 
 <details>
-<summary><b>Все игры по блокам</b></summary>
+<summary><b>Все игры по блокам →</b></summary>
 
 <br>
 
@@ -74,50 +55,42 @@
 
 </details>
 
-## 🛠 Как сделано
+<br>
 
-<div align="center">
+## Две темы, три языка, любой экран
 
-**Ноль зависимостей · Ноль сборщиков · Ноль `node_modules`**
-
-`HTML` · `CSS` · `ванильный JavaScript`
-
-</div>
-
-Ни React, ни Vite, ни Tailwind, ни препроцессоров. В репозитории лежит готовый HTML, GitHub Pages его просто отдаёт. Весь сайт — 2.1 МБ вместе с фотографиями и тремя PDF резюме.
-
-```
-docs/
-├── index.html              выбирает язык по браузеру и перебрасывает
-├── en/ ru/ ro/             по папке на язык, 6 разделов в каждой
-└── static/
-    ├── css/style.css       единственный файл стилей
-    └── js/
-        ├── main.js         тема, меню, фильтры, форма
-        ├── game.js         пасхалка: клик по фотографии на главной
-        └── skills/         мини-игры: ядро + 13 файлов по доменам
-```
-
-- **Пути относительные** — сайт одинаково работает в корне домена, в подпапке и **при открытии файла двойным щелчком, без сервера**.
-- **Язык — в адресе** (`/ru/work/`), а не в параметре: каждая страница лежит отдельным файлом.
-- **Каждый домен игр — свой файл**: механика и тексты на трёх языках лежат рядом, ядро наружу отдаёт только `window.SkillGames`.
-
-## ✨ Внутри сайта
+<img src=".github/readme/themes.png" alt="Тёмная и светлая тема">
 
 - 📁 **13 проектов** — от крупного e-commerce до системы самообслуживания на 41 терминал
 - 💼 **11 мест работы** с 2015 года
-- 🌗 **Тёмная и светлая тема** — переключается и запоминается
-- 🌍 **Три языка** — переключаются на любой странице, не сбрасывая на главную
-- 🐛 **Пасхалка** — клик по фотографии на главной запускает debug mode: мини-игру про отлов багов, где оружие называется PHP, Python, SQL, JS и Flutter
+- 🌍 **EN · RU · RO** — язык переключается на любой странице, не сбрасывая на главную
+- 🐛 **Пасхалка** — клик по фотографии на главной запускает debug mode: отлов багов, где оружие называется PHP, Python, SQL, JS и Flutter
 
-## 📬 Связь
+<br>
+
+## Без единой зависимости
 
 <div align="center">
 
-<a href="mailto:azandarvis@gmail.com"><img src="https://img.shields.io/badge/Email-azandarvis@gmail.com-ff4a1c?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
-<a href="https://t.me/azandarvis"><img src="https://img.shields.io/badge/Telegram-@azandarvis-26A5E4?style=flat-square&logo=telegram&logoColor=white" alt="Telegram"></a>
-<a href="https://linkedin.com/in/yazan-in"><img src="https://img.shields.io/badge/LinkedIn-yazan--in-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+![HTML5](https://img.shields.io/badge/HTML5-17171b?style=for-the-badge&logo=html5&logoColor=ff4a1c)
+![CSS3](https://img.shields.io/badge/CSS3-17171b?style=for-the-badge&logo=css&logoColor=ff4a1c)
+![JavaScript](https://img.shields.io/badge/Vanilla_JS-17171b?style=for-the-badge&logo=javascript&logoColor=ff4a1c)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-17171b?style=for-the-badge&logo=github&logoColor=ff4a1c)
 
-Резюме в PDF на трёх языках — на [странице контактов](https://yazan-darvish.github.io/ru/contact/).
+</div>
+
+Ни React, ни сборщика, ни `node_modules`. В репозитории лежит готовый HTML, GitHub Pages его просто отдаёт. Весь сайт весит **2.1 МБ** вместе с фотографиями и тремя PDF резюме, а открывается даже двойным щелчком по файлу, без сервера.
+
+<br>
+
+<div align="center">
+
+## Связаться
+
+<a href="mailto:azandarvis@gmail.com"><img src="https://img.shields.io/badge/Email-ff4a1c?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+<a href="https://t.me/azandarvis"><img src="https://img.shields.io/badge/Telegram-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"></a>
+<a href="https://linkedin.com/in/yazan-in"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+
+<sub>Резюме в PDF на трёх языках — на <a href="https://yazan-darvish.github.io/ru/contact/">странице контактов</a></sub>
 
 </div>
