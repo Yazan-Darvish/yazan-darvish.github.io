@@ -683,10 +683,12 @@ body.is-gaming{overflow:hidden}
 .dbg__meta{display:flex;gap:22px;font-size:11px;letter-spacing:.14em;
   text-transform:uppercase;color:#8a8a84}
 
-.dbg__weapons{
+/* нижний ряд: шесть языков и рядом Deploy */
+.dbg__dock{
   position:absolute;left:50%;bottom:58px;transform:translateX(-50%);
-  display:flex;gap:8px;justify-content:center;max-width:96vw;
+  display:flex;gap:8px;align-items:stretch;max-width:96vw;
 }
+.dbg__weapons{display:flex;gap:8px;justify-content:center;min-width:0}
 .dbg__w{
   position:relative;overflow:hidden;cursor:pointer;text-align:left;
   background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
@@ -698,7 +700,6 @@ body.is-gaming{overflow:hidden}
 .dbg__w.is-on .dbg__w-name{color:var(--wc)}
 .dbg__w-key{position:absolute;right:10px;top:8px;font-size:10px;color:#6f6f69}
 .dbg__w-name{display:block;font-size:14px;font-weight:500;color:#f2f2ee;margin-bottom:2px}
-.dbg__w-desc{display:block;font-size:10.5px;letter-spacing:.04em;color:#8a8a84}
 .dbg__w-cd{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--wc);
   transform-origin:left;transform:scaleX(1)}
 
@@ -738,6 +739,76 @@ body.is-gaming{overflow:hidden}
   font-family:inherit;text-decoration:underline;text-underline-offset:3px}
 .dbg__exit:hover{color:#fff}
 
+/* заставка волны: под номером — какой инцидент на этот раз */
+.dbg__wave-flash b{display:block;font-weight:700}
+.dbg__wave-flash small{display:block;margin:12px auto 0;max-width:34em;padding:0 20px;
+  font-family:var(--font-mono);font-size:13px;font-weight:400;letter-spacing:.04em;
+  line-height:1.5;color:#c9c9c2}
+.dbg__wave-flash.is-on{animation-duration:2.3s}
+
+/* активный инцидент волны */
+.dbg__mod{position:absolute;top:62px;left:26px;margin:0;padding:5px 12px;border-radius:100px;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#ffb03a;pointer-events:none;
+  border:1px solid rgba(255,176,58,.4);background:rgba(255,176,58,.08)}
+
+/* полоса босса — под HUD, чтобы не спорить с аптаймом за место */
+.dbg__boss{position:absolute;top:62px;left:50%;transform:translateX(-50%);
+  width:min(440px,70vw);text-align:center;pointer-events:none}
+.dbg__boss-name{margin:0 0 7px;font-family:var(--font-display);font-size:18px;font-weight:700;
+  letter-spacing:-.01em;color:#fff}
+.dbg__boss-track{height:8px;border-radius:4px;background:rgba(255,255,255,.12);overflow:hidden}
+.dbg__boss-track i{display:block;height:100%;width:100%;background:#ff5a5a;transition:width .15s linear}
+.dbg__boss-hint{margin:7px 0 0;font-size:11px;line-height:1.45;color:#8a8a84}
+
+/* Deploy: копится за убийства, загорается, когда готов */
+.dbg__ult{
+  position:relative;flex:0 0 auto;z-index:3;overflow:hidden;min-width:104px;
+  padding:13px 18px;border-radius:12px;font-family:inherit;font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;color:#8a8a84;cursor:not-allowed;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.dbg__ult i{position:absolute;left:0;bottom:0;height:3px;width:100%;background:#7ee787;
+  transform-origin:left;transform:scaleX(var(--p,0))}
+.dbg__ult.is-ready{color:#07070b;background:#7ee787;border-color:#7ee787;cursor:pointer;
+  animation:ult-ready 1.3s ease-out infinite}
+@keyframes ult-ready{
+  0%{box-shadow:0 0 0 0 rgba(126,231,135,.55)}
+  70%,100%{box-shadow:0 0 0 12px rgba(126,231,135,0)}
+}
+
+/* роль языка в команде — прямо на кнопке */
+.dbg__w-role{display:block;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--wc);margin:1px 0 3px}
+
+/* брифинг перед боем: кто в команде и за что отвечает */
+.dbg__brief{
+  position:absolute;inset:0;z-index:7;display:grid;place-content:center;justify-items:center;
+  gap:6px;padding:24px;text-align:center;background:rgba(7,7,11,.94);overflow-y:auto;
+}
+.dbg__brief-title{margin:0;font-family:var(--font-display);font-size:clamp(1.7rem,4vw,2.8rem);
+  font-weight:700;letter-spacing:-.03em;color:#fff}
+.dbg__brief-sub{margin:0;font-size:13px;color:#b5b5ae}
+.dbg__brief-cards{display:grid;grid-template-columns:repeat(3,minmax(0,230px));gap:12px;margin:18px 0 8px}
+.dbg__brief-card{
+  text-align:left;padding:13px 15px 14px;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-left:3px solid var(--wc);
+}
+.dbg__brief-card b{display:flex;align-items:center;gap:8px;font-family:var(--font-display);
+  font-size:1.15rem;font-weight:700;letter-spacing:-.01em;color:var(--wc)}
+.dbg__brief-card kbd{font:500 10px var(--font-mono);color:#8a8a84;padding:1px 6px;
+  border:1px solid rgba(255,255,255,.2);border-radius:4px}
+.dbg__brief-card span{display:block;margin:4px 0 6px;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:#cfcfc8}
+.dbg__brief-card p{margin:0;font-size:12px;line-height:1.45;color:#9a9a93}
+.dbg__brief-tip{margin:4px 0 14px;max-width:46em;font-size:12px;line-height:1.5;color:#ffb03a}
+
+.dbg__brief-card p.dbg__brief-foe{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(255,255,255,.12);
+  color:var(--wc);font-size:11.5px}
+/* подсказка: это оружие нужно против бага под прицелом */
+.dbg__w.is-hint{border-color:var(--wc);animation:w-hint .6s ease-in-out infinite alternate}
+@keyframes w-hint{to{background:rgba(255,255,255,.14);transform:translateY(-3px)}}
+
 /* выход во время боя: на телефоне нет Esc */
 .dbg__quit{
   position:absolute;top:14px;right:14px;z-index:4;width:38px;height:38px;border-radius:50%;
@@ -746,7 +817,14 @@ body.is-gaming{overflow:hidden}
   transition:border-color .2s,color .2s;
 }
 .dbg__quit:hover{color:#fff;border-color:rgba(255,255,255,.5)}
-.dbg__hud{right:72px}
+.dbg__info{
+  position:absolute;top:14px;right:60px;z-index:4;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;font:600 16px/1 Georgia,serif;font-style:italic;
+  color:#cfcfc8;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  transition:border-color .2s,color .2s;
+}
+.dbg__info:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.dbg__hud{right:112px}
 
 /* телефон: палец не должен скроллить и зумить страницу под игрой */
 .dbg{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none}
@@ -754,7 +832,7 @@ body.is-gaming{overflow:hidden}
 
 /* ------------------------------------------------- апгрейд оружия ------- */
 
-.dbg__w{padding-bottom:16px}
+.dbg__w{padding-bottom:22px;flex:0 0 108px}
 .dbg__w-lvl{
   position:absolute;right:10px;bottom:6px;font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;color:#6f6f69;
@@ -788,18 +866,21 @@ body.is-gaming{overflow:hidden}
 /* игра на телефоне и планшете — после всех правил .dbg, иначе они перебьют */
 @media (max-width:900px){
   .dbg__quit{top:10px;right:10px}
-  .dbg__hud{top:14px;left:14px;right:60px;flex-direction:column;align-items:flex-start;gap:8px}
+  .dbg__info{top:10px;right:54px}
+  .dbg__hud{top:14px;left:14px;right:100px;flex-direction:column;align-items:flex-start;gap:8px}
   .dbg__bar{gap:8px}
   .dbg__bar-label{font-size:10px}
   .dbg__bar-track{width:96px}
   .dbg__bar b{font-size:13px;min-width:0}
   .dbg__meta{gap:14px;font-size:10px}
 
-  .dbg__weapons{left:8px;right:8px;bottom:54px;transform:none;gap:5px;max-width:none}
-  .dbg__w{flex:1 1 0;padding:9px 4px 18px;text-align:center}
+  .dbg__dock{left:8px;right:8px;bottom:54px;transform:none;max-width:none}
+  .dbg__weapons{flex:1;gap:4px}
+  .dbg__w{flex:1 1 0;min-width:0;padding:8px 2px 17px;text-align:center}
   .dbg__w:hover{transform:none}
-  .dbg__w-key,.dbg__w-desc{display:none}
-  .dbg__w-name{font-size:12px;margin:0}
+  .dbg__w-key{display:none}
+  .dbg__w-name{font-size:11px;margin:0}
+  .dbg__w-role{font-size:7.5px;letter-spacing:.03em;margin:2px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .dbg__w-lvl{left:0;right:0;bottom:5px;font-size:8.5px;text-align:center}
   .dbg__controls{bottom:16px;padding:0 14px;font-size:10px;line-height:1.4}
 
@@ -807,7 +888,27 @@ body.is-gaming{overflow:hidden}
   .dbg__up-card{width:auto;padding:13px 14px 14px}
   .dbg__up-key{display:none}
   .dbg__up-lvl{margin-bottom:6px}
-  .dbg__over-stats{gap:28px}
+  .dbg__over-stats{gap:20px;flex-wrap:wrap;justify-content:center}
+  .dbg__over-stats b{font-size:2rem}
+
+  .dbg__mod{top:66px;left:14px;font-size:10px}
+  .dbg__boss{top:66px;left:14px;right:14px;width:auto;transform:none}
+  .dbg__boss-name{font-size:15px;margin-bottom:5px}
+  .dbg__boss-hint{font-size:10px}
+  .dbg__ult{position:absolute;right:0;bottom:calc(100% + 10px);min-width:0;padding:10px 14px;font-size:11px}
+
+  .dbg__brief{place-content:start center;padding:56px 14px 24px}
+  .dbg__brief-sub{font-size:12px}
+  .dbg__brief-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%;max-width:460px;margin:14px 0 6px}
+  .dbg__brief-card{padding:10px 11px 11px}
+  .dbg__brief-card b{font-size:1rem}
+  .dbg__brief-card span{font-size:9.5px;letter-spacing:.06em}
+  .dbg__brief-card p{font-size:11px}
+  /* на телефоне карточке хватает отдела и того, против кого он */
+  .dbg__brief-card p:not(.dbg__brief-foe){display:none}
+  .dbg__brief-card p.dbg__brief-foe{margin-top:4px;padding-top:6px;font-size:11px}
+  .dbg__brief-tip{font-size:11px}
+  .dbg__wave-flash small{font-size:12px}
 }
 
 /* ------------------------------------------------- поиск по сайту ------- */
