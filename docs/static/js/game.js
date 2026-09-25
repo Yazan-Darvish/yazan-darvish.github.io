@@ -36,7 +36,9 @@ window.DebugGame = (function () {
     };
   }
   var root, canvas, ctx, hud, els = {}, T = null;
-  var W = 0, H = 0, dpr = 1;
+  var W = 0, H = 0, dpr = 1, speedK = 1;
+  /* палец вместо мыши: другая подсказка и кнопка выхода вместо Esc */
+  var touch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   var state = null, raf = null, built = false;
 
   /* ------------------------------------------------------------ разметка */
@@ -46,6 +48,7 @@ window.DebugGame = (function () {
     root.className = "dbg";
     root.innerHTML =
       '<canvas class="dbg__canvas"></canvas>' +
+      '<button type="button" class="dbg__quit">&times;</button>' +
       '<div class="dbg__hud">' +
         '<div class="dbg__bar"><span class="dbg__bar-label"></span>' +
           '<div class="dbg__bar-track"><i></i></div><b></b></div>' +
@@ -92,12 +95,25 @@ window.DebugGame = (function () {
     els.again.addEventListener("click", function () { reset(); });
     els.close.addEventListener("click", function () { stop(); });
 
-    canvas.addEventListener("mousemove", function (e) {
+    els.quit = root.querySelector(".dbg__quit");
+    els.quit.addEventListener("click", function () { stop(); });
+
+    /* pointer-события покрывают и мышь, и палец: касание сразу целится
+       и стреляет, пока палец на экране */
+    canvas.addEventListener("pointermove", function (e) {
       state.aim.x = e.clientX;
       state.aim.y = e.clientY;
     });
-    canvas.addEventListener("mousedown", function () { state.firing = true; });
-    window.addEventListener("mouseup", function () { if (state) state.firing = false; });
+    canvas.addEventListener("pointerdown", function (e) {
+      state.aim.x = e.clientX;
+      state.aim.y = e.clientY;
+      state.firing = true;
+      /* захват не критичен: без него палец просто не «уедет» за край */
+      if (e.pointerType !== "mouse") try { canvas.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    function release() { if (state) state.firing = false; }
+    window.addEventListener("pointerup", release);
+    window.addEventListener("pointercancel", release);
     canvas.addEventListener("wheel", function (e) {
       e.preventDefault();
       pick(state.weapon + (e.deltaY > 0 ? 1 : -1));
@@ -131,6 +147,9 @@ window.DebugGame = (function () {
     canvas.width = W * dpr;
     canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    /* баланс рассчитан на экран ноутбука; на телефоне до ядра вдвое ближе,
+       поэтому баги замедляются, чтобы им оставалось столько же времени */
+    speedK = Math.max(0.6, Math.min(1, Math.hypot(W, H) / 2 / 740));
   }
 
   function renderWeapons() {
@@ -235,7 +254,7 @@ window.DebugGame = (function () {
       if (!frozen) {
         var dx = cx - b.x, dy = cy - b.y;
         var d = Math.hypot(dx, dy) || 1;
-        var sp = t.speed * (1 + state.wave * 0.12);
+        var sp = t.speed * (1 + state.wave * 0.12) * speedK;
         var nx = dx / d, ny = dy / d;
         if (b.type === "race") {
           b.phase += dt * 6;
@@ -589,7 +608,8 @@ window.DebugGame = (function () {
     T = texts;
     if (!built) build();
     els.barLabel.textContent = T.uptime;
-    els.controls.textContent = T.controls;
+    els.controls.textContent = touch && T.controls_touch ? T.controls_touch : T.controls;
+    els.quit.setAttribute("aria-label", T.close);
     els.again.textContent = T.again;
     els.close.textContent = T.close;
     renderWeapons();

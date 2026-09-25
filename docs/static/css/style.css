@@ -220,7 +220,7 @@ section{padding:clamp(70px,11vh,130px) 0}
 .chip:hover{border-color:var(--accent)}
 .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
 
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:30px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:30px}
 .card{
   background:var(--bg-card);border:1px solid var(--line-soft);border-radius:14px;
   overflow:hidden;display:flex;flex-direction:column;
@@ -378,6 +378,14 @@ section{padding:clamp(70px,11vh,130px) 0}
 .lang a:hover{color:var(--text)}
 .lang a[aria-current="true"]{background:var(--text);color:var(--bg)}
 
+/* самые узкие телефоны (iPhone SE, 320px): шапка и заголовок
+   иначе шире экрана на несколько пикселей */
+@media (max-width:380px){
+  .site-head__in{gap:10px}
+  .head-tools{gap:6px}
+  .lang a{padding:8px 9px}
+}
+
 /* ------------------------------------------------- доп. блоки ----------- */
 
 .tl-item__stack{
@@ -433,6 +441,8 @@ section{padding:clamp(70px,11vh,130px) 0}
   gap:clamp(28px,5vw,64px);align-items:center;
 }
 .hero .display{font-size:clamp(2.6rem,7.2vw,6.4rem)}
+/* «ОПТИМИЗАЦИЯ.» на 320px в минимальный размер не влезает */
+@media (max-width:380px){.hero .display{font-size:2.2rem}}
 
 .hero__photo{
   margin:0;position:relative;width:100%;aspect-ratio:4/5;max-height:62vh;
@@ -728,7 +738,19 @@ body.is-gaming{overflow:hidden}
   font-family:inherit;text-decoration:underline;text-underline-offset:3px}
 .dbg__exit:hover{color:#fff}
 
-@media (max-width:900px){.dbg{display:none}}
+/* выход во время боя: на телефоне нет Esc */
+.dbg__quit{
+  position:absolute;top:14px;right:14px;z-index:4;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;font:300 24px/1 var(--font-mono);
+  color:#cfcfc8;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);
+  transition:border-color .2s,color .2s;
+}
+.dbg__quit:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.dbg__hud{right:72px}
+
+/* телефон: палец не должен скроллить и зумить страницу под игрой */
+.dbg{touch-action:none;-webkit-touch-callout:none;-webkit-user-select:none}
+
 
 /* ------------------------------------------------- апгрейд оружия ------- */
 
@@ -762,6 +784,31 @@ body.is-gaming{overflow:hidden}
 .dbg__up-lvl{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
   color:#8a8a84;margin-bottom:10px}
 .dbg__up-desc{display:block;font-size:12px;line-height:1.45;color:#b5b5ae}
+
+/* игра на телефоне и планшете — после всех правил .dbg, иначе они перебьют */
+@media (max-width:900px){
+  .dbg__quit{top:10px;right:10px}
+  .dbg__hud{top:14px;left:14px;right:60px;flex-direction:column;align-items:flex-start;gap:8px}
+  .dbg__bar{gap:8px}
+  .dbg__bar-label{font-size:10px}
+  .dbg__bar-track{width:96px}
+  .dbg__bar b{font-size:13px;min-width:0}
+  .dbg__meta{gap:14px;font-size:10px}
+
+  .dbg__weapons{left:8px;right:8px;bottom:54px;transform:none;gap:5px;max-width:none}
+  .dbg__w{flex:1 1 0;padding:9px 4px 18px;text-align:center}
+  .dbg__w:hover{transform:none}
+  .dbg__w-key,.dbg__w-desc{display:none}
+  .dbg__w-name{font-size:12px;margin:0}
+  .dbg__w-lvl{left:0;right:0;bottom:5px;font-size:8.5px;text-align:center}
+  .dbg__controls{bottom:16px;padding:0 14px;font-size:10px;line-height:1.4}
+
+  .dbg__up-cards{flex-direction:column;gap:10px;width:min(320px,86vw)}
+  .dbg__up-card{width:auto;padding:13px 14px 14px}
+  .dbg__up-key{display:none}
+  .dbg__up-lvl{margin-bottom:6px}
+  .dbg__over-stats{gap:28px}
+}
 
 /* ------------------------------------------------- поиск по сайту ------- */
 
@@ -822,7 +869,7 @@ body.is-gaming{overflow:hidden}
 /* ------------------------------------------------- страница навыков ----- */
 
 .skill-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:20px;
 }
 .skill-card{
   background:var(--bg-card);border:1px solid var(--line-soft);border-radius:14px;

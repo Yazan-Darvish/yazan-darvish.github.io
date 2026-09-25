@@ -409,6 +409,14 @@
   /* --------------------------------------------------------------- фото-игра */
 
   var photoEl = $("[data-photo]");
+  if (photoEl && page === "home") {
+    photoEl.addEventListener("click", function () {
+      photoEl.style.transform = "";
+      track("debug-game");
+      if (window.DebugGame) window.DebugGame.start(G);
+    });
+  }
+  /* наклон за курсором — только там, где есть мышь */
   if (photoEl && page === "home" && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     photoEl.addEventListener("mousemove", function (e) {
       var r = photoEl.getBoundingClientRect();
@@ -418,11 +426,6 @@
         "perspective(700px) rotateY(" + (px * 9).toFixed(2) + "deg) rotateX(" + (-py * 9).toFixed(2) + "deg)";
     });
     photoEl.addEventListener("mouseleave", function () { photoEl.style.transform = ""; });
-    photoEl.addEventListener("click", function () {
-      photoEl.style.transform = "";
-      track("debug-game");
-      if (window.DebugGame) window.DebugGame.start(G);
-    });
   }
 })();
 
