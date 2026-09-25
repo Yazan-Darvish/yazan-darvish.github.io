@@ -18,6 +18,19 @@
   var F = json("ui-form");
   var G = json("ui-game");
 
+  /* ------------------------------------------------- открытие файлом ----- */
+
+  /* Сайт должен листаться и без сервера — двойным щелчком по index.html.
+     Ссылки между страницами ведут на папку («../ru/work/»), а file:// сам
+     index.html для папки не подставляет. Дописываем его, и только здесь:
+     на сервере адреса остаются чистыми, без хвоста. */
+  if (location.protocol === "file:") {
+    var links = document.querySelectorAll('a[href^="."][href$="/"], a[href^="/"][href$="/"]');
+    Array.prototype.forEach.call(links, function (a) {
+      a.setAttribute("href", a.getAttribute("href") + "index.html");
+    });
+  }
+
   /* ---------------------------------------------------------------- тема */
 
   root.setAttribute("data-theme", read("theme") === "light" ? "light" : "dark");

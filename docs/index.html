@@ -5,10 +5,15 @@
 <title>Yazan Darvish — Senior Backend Engineer</title>
 <link rel="canonical" href="en/">
 <script>
-  /* Пути относительные: сайт должен работать и в корне домена,
-     и в подпапке вроде /Profile/ на GitHub Pages. */
+  /* Пути относительные: сайт работает и в корне домена, и в подпапке
+     вроде /Profile/ на GitHub Pages.
+
+     При открытии файлом (file://) браузер не подставляет index.html
+     для папки, поэтому здесь дописываем его сами. На сервере адрес
+     остаётся чистым. */
   var lang = (navigator.language || "en").slice(0, 2);
-  location.replace((["ru", "ro"].indexOf(lang) !== -1 ? lang : "en") + "/");
+  var dir = (["ru", "ro"].indexOf(lang) !== -1 ? lang : "en") + "/";
+  location.replace(location.protocol === "file:" ? dir + "index.html" : dir);
 </script>
 <meta http-equiv="refresh" content="0; url=en/">
 </head>
