@@ -456,8 +456,14 @@ section{padding:clamp(70px,11vh,130px) 0}
 
 @media (max-width:900px){
   .hero__grid{grid-template-columns:1fr;gap:26px}
-  .hero__photo{width:190px;height:190px;min-height:0;border-radius:12px;order:-1}
+  /* На телефоне фото во всю ширину колонки: маленький квадрат у левого
+     края выглядел случайным, а плашка игры закрывала лицо. */
+  .hero__photo{width:100%;max-width:420px;height:auto;max-height:none;
+    aspect-ratio:1/1;border-radius:12px;order:-1}
+  .hero__photo img{object-position:center 18%}
   .hero__photo figcaption{display:none}
+  /* фото теперь крупное — большой отступ сверху выглядел дырой */
+  .hero{padding-top:28px}
 }
 
 /* ------------------------------------------------- страница контактов --- */
@@ -628,6 +634,11 @@ section{padding:clamp(70px,11vh,130px) 0}
 }
 @keyframes bug-wiggle{to{transform:rotate(9deg)}}
 .hero__photo:hover .photo-bug{animation-play-state:paused}
+
+/* на телефоне плашка внизу, чтобы не закрывать лицо */
+@media (max-width:900px){
+  .photo-cta{top:auto;bottom:10px}
+}
 
 @media (prefers-reduced-motion:reduce){
   .photo-cta__play,.photo-bug,.photo-bug svg{animation:none}

@@ -19,8 +19,9 @@
     if (ref && ref.indexOf(location.origin) !== 0) sessionStorage.setItem("entry-ref", ref);
   } catch (e) {}
 
-  var lang = (navigator.language || "en").slice(0, 2);
-  var dir = (["ru", "ro"].indexOf(lang) !== -1 ? lang : "en") + "/";
+  /* Язык по умолчанию — всегда английский, независимо от настроек
+     браузера. Русский и румынский выбираются переключателем. */
+  var dir = "en/";
   location.replace(location.protocol === "file:" ? dir + "index.html" : dir);
 </script>
 <meta http-equiv="refresh" content="0; url=en/">
