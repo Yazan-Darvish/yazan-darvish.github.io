@@ -94,10 +94,16 @@
   function later(fn, ms) { var id = setTimeout(fn, ms); timers.push(id); return id; }
   function stopTimers() { timers.forEach(clearTimeout); timers = []; }
 
+  /* Счётчик — через помощник из main.js: какие игры открывают и какие
+     доигрывают. main.js подключён раньше, но блокировщик может его не
+     пустить, поэтому проверяем. */
+  function track(name) { if (window.siteTrack) window.siteTrack(name, { game: current }); }
+
   function open(id) {
     if (!GAMES[id]) return;
     stopTimers();
     current = id;
+    track("game-open");
     elTitle.textContent = t(id, "title");
     elTask.textContent = t(id, "task");
     elArea.innerHTML = "";
@@ -108,6 +114,7 @@
   }
 
   function finish() {
+    track("game-finish");
     elDoneText.textContent = t(current, "done");
     elDone.hidden = false;
   }

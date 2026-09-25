@@ -11,6 +11,14 @@
      При открытии файлом (file://) браузер не подставляет index.html
      для папки, поэтому здесь дописываем его сами. На сервере адрес
      остаётся чистым. */
+  /* Настоящий источник захода (LinkedIn, Google) после переадресации
+     потеряется — браузер назовёт источником эту страницу. Сохраняем его
+     для счётчика, main.js подставит. */
+  try {
+    var ref = document.referrer;
+    if (ref && ref.indexOf(location.origin) !== 0) sessionStorage.setItem("entry-ref", ref);
+  } catch (e) {}
+
   var lang = (navigator.language || "en").slice(0, 2);
   var dir = (["ru", "ro"].indexOf(lang) !== -1 ? lang : "en") + "/";
   location.replace(location.protocol === "file:" ? dir + "index.html" : dir);

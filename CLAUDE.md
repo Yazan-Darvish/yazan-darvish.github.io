@@ -268,6 +268,36 @@ PostgreSQL и MySQL разведены нарочно: первый про це�
 бы примерно втрое меньше, но тексты перестали бы лежать рядом со своей
 механикой.
 
+## Аналитика
+
+Umami Cloud, без cookie и баннера согласия. Панель — cloud.umami.is,
+`website-id` `1a85096d-4568-41c7-a75e-2950c93c6b1c`. Скрипт стоит в `<head>`
+всех 18 страниц.
+
+- `data-domains="yazan-darvish.github.io"` — на localhost и при открытии
+  файлом счётчик ничего не отправляет, свои заходы статистику не портят.
+  Переедет сайт на другой домен — поменять здесь во всех 18 файлах.
+- Корень `docs/index.html` сразу переадресует на язык, и источником захода
+  стал бы сам сайт. Поэтому переадресация кладёт настоящий `document.referrer`
+  в `sessionStorage` (`entry-ref`), а `window.umamiBeforeSend` в `main.js`
+  подставляет его в первый просмотр.
+- События шлются только через `track()` в `main.js` (снаружи —
+  `window.siteTrack`), чтобы второй сервис подключался в одном месте:
+  `cv-download` (`file`), `contact` (`via`: email / phone / telegram /
+  linkedin), `outbound` (`host`), `debug-game`, `game-open` и `game-finish`
+  (`game` — id мини-игры, шлёт `skills/core.js`).
+
+**Microsoft Clarity** — тепловые карты и записи сессий, проект
+`ynvwkoxl7u`, панель — clarity.microsoft.com. Clarity ставит cookie, поэтому
+грузится только после согласия: `main.js` показывает баннер (`.consent`,
+тексты на трёх языках там же), выбор лежит в `localStorage.consent`
+(`yes` / `no`). Ссылка «Cookie» в подвале всех 18 страниц
+(`data-consent-open`) открывает баннер снова; отказ после согласия стирает
+cookie Clarity и перезагружает страницу. Скрипт грузится только на
+`yazan-darvish.github.io` (`PROD_HOST` в `main.js`) — на localhost баннер
+виден, но ничего не пишется. `track()` дублирует события в Clarity:
+`clarity("event")` плюс данные события метками `clarity("set")`.
+
 ## Метка версии ассетов
 
 В каждой странице стоит `static/css/style.css?v=<число>`. Раньше её проставлял
@@ -278,10 +308,10 @@ CSS или JS метку надо обновить руками во всех 18
 ```bash
 python3 - <<'EOF'
 import pathlib, re
-assets = list(pathlib.Path("docs/static/css").glob("*")) + list(pathlib.Path("docs/static/js").glob("*"))
+assets = list(pathlib.Path("docs/static/css").glob("*")) + list(pathlib.Path("docs/static/js").rglob("*.js"))
 v = int(max(a.stat().st_mtime for a in assets))
 for p in pathlib.Path("docs").rglob("*.html"):
-    p.write_text(re.sub(r'(static/(?:css|js)/[\w.-]+)\?v=\d+', rf'\1?v={v}', p.read_text()))
+    p.write_text(re.sub(r'(static/(?:css|js)/[\w./-]+)\?v=\d+', rf'\1?v={v}', p.read_text()))
 print("метка:", v)
 EOF
 ```

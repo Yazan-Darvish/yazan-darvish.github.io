@@ -18,6 +18,126 @@
   var F = json("ui-form");
   var G = json("ui-game");
 
+  /* ----------------------------------------------------------- аналитика - */
+
+  /* Все события идут через track(), а не в umami напрямую: появится второй
+     сервис — правка будет здесь одна. Без счётчика (localhost, file://,
+     блокировщик рекламы) вызов молча ничего не делает. */
+  function track(name, data) {
+    try { if (window.umami) window.umami.track(name, data); } catch (e) {}
+    /* В Clarity те же события — чтобы отфильтровать записи, например,
+       только тех, кто скачал резюме. Данные события идут метками сессии. */
+    try {
+      if (window.clarity) {
+        Object.keys(data || {}).forEach(function (k) { window.clarity("set", k, String(data[k])); });
+        window.clarity("event", name);
+      }
+    } catch (e) {}
+  }
+  window.siteTrack = track;
+
+  /* ------------------------------------------------ согласие и Clarity --- */
+
+  /* Clarity ставит cookie и пишет сессии, а для посетителей из ЕС на это
+     нужно согласие. Поэтому скрипт грузится только после «Разрешить»;
+     Umami без cookie работает у всех. Отправляем только с боевого домена —
+     свои заходы с localhost тепловые карты не портят. */
+  var PROD_HOST = "yazan-darvish.github.io";
+  var CLARITY_ID = "ynvwkoxl7u";
+  var CONSENT = {
+    en: { text: "May I record visits (clicks and scrolling) with Microsoft Clarity to make the site better? What you type in the form is never recorded.",
+          yes: "Allow", no: "No, thanks", label: "Visit recording" },
+    ru: { text: "Можно записывать посещения (клики и прокрутку) через Microsoft Clarity, чтобы улучшать сайт? То, что вы пишете в форме, не записывается.",
+          yes: "Разрешить", no: "Нет, спасибо", label: "Запись посещений" },
+    ro: { text: "Pot înregistra vizitele (clicuri și derulare) prin Microsoft Clarity pentru a îmbunătăți site-ul? Ce scrieți în formular nu se înregistrează.",
+          yes: "Permit", no: "Nu, mulțumesc", label: "Înregistrarea vizitelor" }
+  };
+  var C = CONSENT[root.lang] || CONSENT.en;
+
+  function loadClarity() {
+    if (location.hostname !== PROD_HOST || window.clarity) return;
+    /* Официальный загрузчик Clarity: очередь вызовов до загрузки скрипта. */
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", CLARITY_ID);
+    window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "granted" });
+  }
+
+  var consentBox = null;
+  function askConsent() {
+    if (!consentBox) {
+      consentBox = document.createElement("div");
+      consentBox.className = "consent";
+      consentBox.setAttribute("role", "dialog");
+      consentBox.setAttribute("aria-label", C.label);
+      consentBox.innerHTML =
+        '<p class="consent__text">' + C.text + "</p>" +
+        '<div class="consent__btns">' +
+          '<button type="button" class="btn btn--accent" data-consent="yes">' + C.yes + "</button>" +
+          '<button type="button" class="btn btn--ghost" data-consent="no">' + C.no + "</button>" +
+        "</div>";
+      consentBox.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-consent]");
+        if (b) setConsent(b.dataset.consent === "yes");
+      });
+      document.body.appendChild(consentBox);
+    }
+    consentBox.hidden = false;
+  }
+
+  function setConsent(yes) {
+    store("consent", yes ? "yes" : "no");
+    consentBox.hidden = true;
+    if (yes) { loadClarity(); return; }
+    /* Отозвал согласие, а запись уже идёт: Clarity стирает свои cookie,
+       перезагрузка выгружает сам скрипт. */
+    if (window.clarity) {
+      window.clarity("consentv2", { ad_Storage: "denied", analytics_Storage: "denied" });
+      window.clarity("consent", false);
+      location.reload();
+    }
+  }
+
+  var consent = read("consent");
+  if (consent === "yes") loadClarity();
+  else if (consent !== "no") askConsent();
+
+  /* Ссылка в подвале — передумать в любую сторону. */
+  document.querySelectorAll("[data-consent-open]").forEach(function (b) {
+    b.addEventListener("click", askConsent);
+  });
+
+  /* Корень сайта сразу переадресует на /en/ и т.п., и Umami видит источником
+     собственный сайт вместо LinkedIn или Google. Переадресация кладёт
+     настоящий источник в sessionStorage, здесь он подставляется в первый
+     просмотр и стирается. */
+  window.umamiBeforeSend = function (type, payload) {
+    try {
+      var ref = sessionStorage.getItem("entry-ref");
+      if (ref && payload && type === "event" && !payload.name) {
+        payload.referrer = ref;
+        sessionStorage.removeItem("entry-ref");
+      }
+    } catch (e) {}
+    return payload;
+  };
+
+  /* Какие ссылки считаем: резюме и способы связаться — ради них сайт
+     и существует. Остальные внешние — одним событием с доменом. */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href");
+    if (/\/cv\/.+\.pdf$/i.test(href)) track("cv-download", { file: href.split("/").pop() });
+    else if (/^mailto:/i.test(href)) track("contact", { via: "email" });
+    else if (/^tel:/i.test(href)) track("contact", { via: "phone" });
+    else if (/\/\/t\.me\//i.test(href)) track("contact", { via: "telegram" });
+    else if (/linkedin\.com/i.test(href)) track("contact", { via: "linkedin" });
+    else if (a.host && a.host !== location.host) track("outbound", { host: a.host });
+  }, true);
+
   /* ------------------------------------------------- открытие файлом ----- */
 
   /* Сайт должен листаться и без сервера — двойным щелчком по index.html.
@@ -300,6 +420,7 @@
     photoEl.addEventListener("mouseleave", function () { photoEl.style.transform = ""; });
     photoEl.addEventListener("click", function () {
       photoEl.style.transform = "";
+      track("debug-game");
       if (window.DebugGame) window.DebugGame.start(G);
     });
   }
