@@ -352,7 +352,8 @@ section{padding:clamp(70px,11vh,130px) 0}
   .tl-item{grid-template-columns:1fr;gap:10px}
 }
 
-@media (max-width:700px){
+/* бургер с 820px: русское и румынское меню до ~780px в строку не влезают */
+@media (max-width:820px){
   body{font-size:16px}
   .burger{display:grid}
   .nav{
